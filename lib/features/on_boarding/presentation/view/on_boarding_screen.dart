@@ -34,7 +34,7 @@ class OnBoardingScreen extends StatelessWidget {
           Positioned(
             bottom: MediaQuery.of(context).size.height * 0.1,
             child: GestureDetector(
-              onTap: () => context.pushName(Routes.homeScreen),
+              onTap: () => context.pushName(Routes.loginScreen),
               child: GetStartButton(),
             ),
           ),

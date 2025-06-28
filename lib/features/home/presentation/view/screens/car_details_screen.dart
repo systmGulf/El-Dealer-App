@@ -3,7 +3,7 @@ import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 import '../../../../../core/common/app_spaces.dart';
 import '../widgets/book_new_botton.dart';
@@ -22,7 +22,7 @@ class CarDetailsScreen extends StatelessWidget {
           onPressed: () {
             context.pop();
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
         ),
         title: Text(
           'Ferrari 280 Special',

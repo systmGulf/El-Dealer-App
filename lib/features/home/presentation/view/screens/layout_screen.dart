@@ -18,7 +18,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF131515),
+      backgroundColor: AppColors.scaffoldColor,
       bottomNavigationBar: IntrinsicHeight(
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,

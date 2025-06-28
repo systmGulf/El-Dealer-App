@@ -1,3 +1,4 @@
+import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -113,13 +114,74 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
     letterSpacing: 0.03,
   );
-  
-  static TextStyle font12SatoshiRegularWithOpacity =  TextStyle(
-                              color: Colors.white.withValues(alpha: 128),
-                              fontSize: 12,
-                              fontFamily: 'Satoshi',
-                              fontWeight: FontWeight.w400,
-                              letterSpacing: 0.01,
-                            );
-                      
+
+  static TextStyle font12SatoshiRegularWithOpacity = TextStyle(
+    color: Colors.white.withValues(alpha: 128),
+    fontSize: 12,
+    fontFamily: 'Satoshi',
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.01,
+  );
+  static TextStyle font19reguleWhite = TextStyle(
+    color: Colors.white,
+    fontSize: 19,
+    fontFamily: 'Satoshi',
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.01,
+  );
+  static TextStyle font15regulerGrey = TextStyle(
+    color: Colors.grey,
+    fontSize: 15,
+    fontFamily: 'Satoshi',
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.01,
+  );
+  static TextStyle font20MontserratBold = TextStyle(
+    color: AppColors.orangeColor,
+    fontSize: 20,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w700,
+    height: 1.40,
+    letterSpacing: 0.10,
+  );
+  static TextStyle font14MontserratBold = TextStyle(
+    color: AppColors.orangeColor,
+    fontSize: 14,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.bold,
+    height: 1.43,
+    letterSpacing: 0.07,
+  );
+  static TextStyle font14MontserratRegular = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w400,
+    height: 1.43,
+    letterSpacing: 0.07,
+  );
+  static TextStyle font14MontserratRegularWithOpacity = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w400,
+    height: 1.43,
+    letterSpacing: 0.07,
+  );
+  static TextStyle font14MontserratRegularWithOpacity2 = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w400,
+    height: 1.43,
+    letterSpacing: 0.07,
+  );
+  static TextStyle font14MontserratRegularWithOpacity3 = TextStyle(
+    color: Colors.white,
+    fontSize: 14,
+    fontFamily: 'Montserrat',
+    fontWeight: FontWeight.w400,
+    height: 1.43,
+    letterSpacing: 0.07,
+  );
 }
