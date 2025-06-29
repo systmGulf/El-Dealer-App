@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/app_spaces.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
@@ -24,66 +25,74 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 verticalSpace(30),
                 Text(
-                  'Create Account',
+                  'Create Account'.tr(context: context),
                   style: AppTextStyles.font20MontserratBold,
                 ),
                 verticalSpace(8),
                 Opacity(
                   opacity: 0.50,
                   child: Text(
-                    'Sign up now and enjoy rental ease like \nnever before.',
+                    'Sign up now and enjoy rental ease like \nnever before.'.tr(
+                      context: context,
+                    ),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratRegularWithOpacity3,
                   ),
                 ),
                 verticalSpace(30),
                 Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    'Name',
+                    'Name'.tr(context: context),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratRegularWithOpacity2,
                   ),
                 ),
                 verticalSpace(5),
-                CustomAppTextFormField(hint: 'Enter Name'),
+                CustomAppTextFormField(hint: 'Enter Name'.tr(context: context)),
                 verticalSpace(30),
                 Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    'Email',
+                    'Email'.tr(context: context),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratRegularWithOpacity2,
                   ),
                 ),
                 verticalSpace(5),
-                CustomAppTextFormField(hint: 'Enter Email'),
+                CustomAppTextFormField(
+                  hint: 'Enter Email'.tr(context: context),
+                ),
                 verticalSpace(30),
                 Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    'Password',
+                    'Password'.tr(context: context),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratRegularWithOpacity2,
                   ),
                 ),
                 verticalSpace(5),
-                CustomAppTextFormField(hint: 'Enter Password'),
+                CustomAppTextFormField(
+                  hint: 'Enter Password'.tr(context: context),
+                ),
                 verticalSpace(30),
                 Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Text(
-                    'Confirm Password',
+                    'Confirm Password'.tr(context: context),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratRegularWithOpacity2,
                   ),
                 ),
                 verticalSpace(5),
-                CustomAppTextFormField(hint: 'Confirm Password'),
+                CustomAppTextFormField(
+                  hint: 'Confirm Password'.tr(context: context),
+                ),
                 verticalSpace(30),
                 CustomAppButton(
                   onPressed: () => context.pushName(Routes.homeScreen),
-                  textButton: 'Sign Up',
+                  textButton: 'Sign Up'.tr(context: context),
                   buttonColor: AppColors.orangeColor,
                 ),
 
@@ -93,14 +102,14 @@ class SignUpScreen extends StatelessWidget {
                   children: [
                     Expanded(child: Divider()),
                     Text(
-                      'Already have an account?',
+                      'Already have an account?'.tr(context: context),
                       style: AppTextStyles.font14MontserratRegularWithOpacity2,
                     ),
                     horizontalSpace(5),
                     GestureDetector(
                       onTap: () => context.pop(),
                       child: Text(
-                        'Sign In',
+                        'Sign In'.tr(context: context),
                         style: AppTextStyles.font14MontserratBold,
                       ),
                     ),

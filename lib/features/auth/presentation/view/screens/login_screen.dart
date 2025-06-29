@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/app_spaces.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/routing/routes.dart';
@@ -33,14 +34,19 @@ class LoginScreen extends StatelessWidget {
                 ],
               ),
               verticalSpace(20),
-              Text('Sign In', style: AppTextStyles.font20MontserratBold),
+              Text(
+                'Sign In'.tr(context: context),
+                style: AppTextStyles.font20MontserratBold,
+              ),
               verticalSpace(8),
               SizedBox(
                 width: 345,
                 child: Opacity(
                   opacity: 0.50,
                   child: Text(
-                    'Sign up now and enjoy rental ease like \nnever before.',
+                    'Sign up now and enjoy rental ease like \nnever before.'.tr(
+                      context: context,
+                    ),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratRegularWithOpacity3,
                   ),
@@ -48,32 +54,36 @@ class LoginScreen extends StatelessWidget {
               ),
               verticalSpace(20),
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: AlignmentDirectional.centerStart,
                 child: Text(
-                  'Email',
+                  'Email'.tr(context: context),
                   textAlign: TextAlign.center,
                   style: AppTextStyles.font14MontserratRegularWithOpacity2,
                 ),
               ),
               verticalSpace(8),
-              CustomAppTextFormField(hint: 'Enter your email'),
+              CustomAppTextFormField(
+                hint: 'Enter your email'.tr(context: context),
+              ),
               verticalSpace(20),
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: AlignmentDirectional.centerStart,
                 child: Text(
-                  'Password',
+                  'Password'.tr(context: context),
                   textAlign: TextAlign.center,
                   style: AppTextStyles.font14MontserratRegularWithOpacity,
                 ),
               ),
               verticalSpace(8),
-              CustomAppTextFormField(hint: 'Enter your password'),
+              CustomAppTextFormField(
+                hint: 'Enter your password'.tr(context: context),
+              ),
               verticalSpace(20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    'Forgot Password?',
+                    'Forgot Password?'.tr(context: context),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratBold,
                   ),
@@ -84,7 +94,7 @@ class LoginScreen extends StatelessWidget {
                 onPressed: () {
                   context.pushName(Routes.homeScreen);
                 },
-                textButton: 'Sign In',
+                textButton: 'Sign In'.tr(context: context),
                 buttonColor: AppColors.orangeColor,
               ),
               verticalSpace(50),
@@ -93,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                   Expanded(child: Divider()),
                   horizontalSpace(5),
                   Text(
-                    'Don\'t have an account?',
+                    'Don\'t have an account?'.tr(context: context),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.font14MontserratRegular,
                   ),
@@ -103,7 +113,7 @@ class LoginScreen extends StatelessWidget {
                       context.pushName(Routes.signUpScreen);
                     },
                     child: Text(
-                      ' Sign Up',
+                      ' Sign Up'.tr(context: context),
                       textAlign: TextAlign.center,
                       style: AppTextStyles.font14MontserratBold,
                     ),

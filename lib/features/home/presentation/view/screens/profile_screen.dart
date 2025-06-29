@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/common/app_spaces.dart';
+import '../../../../../core/common/change_language_method.dart';
 import '../widgets/car_in_history_widget.dart';
 import '../widgets/settings_item_widget.dart';
 import '../widgets/user_profile_card.dart';
@@ -22,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'History',
+                'History'.tr(context: context),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -50,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(
-                'Profile Settings',
+                'Profile Settings'.tr(context: context),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -63,27 +65,24 @@ class ProfileScreen extends StatelessWidget {
             ),
             verticalSpace(16),
             SettingsItemWidget(
-              title: 'Account Settings',
+              title: 'Account Settings'.tr(context: context),
               leadingIcon: Icon(Icons.person_2_outlined, color: Colors.white),
               trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.white),
             ),
             SettingsItemWidget(
-              title: 'Dark mode',
-              leadingIcon: Icon(Icons.light_sharp, color: Colors.white),
+              onTap: () => buildChangeLanguageBottomSheet(context),
+              title: 'Language'.tr(context: context),
+              leadingIcon: Icon(Icons.language, color: Colors.white),
               trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.white),
             ),
+
             SettingsItemWidget(
-              title: 'Card Details',
-              leadingIcon: Icon(Icons.credit_card, color: Colors.white),
-              trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.white),
-            ),
-            SettingsItemWidget(
-              title: 'Car Preferences',
+              title: 'Car Preferences'.tr(context: context),
               leadingIcon: Icon(Icons.car_crash_outlined, color: Colors.white),
               trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.white),
             ),
             SettingsItemWidget(
-              title: 'Offers and Discounts',
+              title: 'Offers and Discounts'.tr(context: context),
               leadingIcon: Icon(Icons.gif_outlined, color: Colors.white),
               trailingIcon: Icon(Icons.arrow_forward_ios, color: Colors.white),
             ),

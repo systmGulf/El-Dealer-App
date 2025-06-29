@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +32,10 @@ class SavedCarWidget extends StatelessWidget {
         children: [
           SvgPicture.asset('assets/svgs/favourite_icon.svg'),
           horizontalSpace(8),
-          Text('Saved Cars', style: AppTextStyles.font18BoldWhite),
+          Text(
+            'Saved Cars'.tr(context: context),
+            style: AppTextStyles.font18BoldWhite,
+          ),
         ],
       ),
     );

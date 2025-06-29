@@ -4,6 +4,7 @@ import 'package:eldealer/features/auth/presentation/view/screens/login_screen.da
 import 'package:eldealer/features/auth/presentation/view/screens/sign_up_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/car_details_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/layout_screen.dart';
+import 'package:eldealer/features/home/presentation/view/screens/rent_screen.dart';
 import 'package:eldealer/features/on_boarding/presentation/view/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -25,6 +26,9 @@ class AppRouter {
       // sign up Screen
       case Routes.signUpScreen:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());
+      // rent Screen
+      case Routes.rentScreen:
+        return MaterialPageRoute(builder: (_) => const RentScreen());
       default:
         // this is the default route
         return MaterialPageRoute(builder: (_) => const NoRouteScreen());

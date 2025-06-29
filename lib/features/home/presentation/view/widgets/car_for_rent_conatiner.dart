@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../../../../../core/common/app_spaces.dart';
 import '../../../../../core/routing/routes.dart';
 
-class CarForRentConatiner extends StatelessWidget {
-  const CarForRentConatiner({super.key});
+class CarForRentwidget extends StatelessWidget {
+  const CarForRentwidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,6 @@ class CarForRentConatiner extends StatelessWidget {
         context.pushName(Routes.carDetailsScreen);
       },
       child: Container(
-        height: 291,
         padding: const EdgeInsets.all(16),
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
@@ -29,7 +29,7 @@ class CarForRentConatiner extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Ferrari 280 Special',
+                  'Ferrari 280 Special'.tr(context: context),
                   style: AppTextStyles.font24BoldBlack,
                 ),
                 Spacer(),
@@ -37,7 +37,7 @@ class CarForRentConatiner extends StatelessWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: '250',
+                        text: '250'.tr(context: context),
                         style: AppTextStyles.font24BoldBlack.copyWith(
                           color: Colors.black.withValues(alpha: 166),
                         ),
@@ -49,7 +49,7 @@ class CarForRentConatiner extends StatelessWidget {
                         ),
                       ),
                       TextSpan(
-                        text: 'Day',
+                        text: 'Day'.tr(context: context),
                         style: AppTextStyles.font16RegularBlack,
                       ),
                     ],
@@ -80,7 +80,7 @@ class CarForRentConatiner extends StatelessWidget {
                     spacing: 1,
                     children: [
                       Text(
-                        'View Details',
+                        'View Details'.tr(context: context),
                         style: AppTextStyles.font14MediumRed,
                       ),
                     ],
@@ -104,38 +104,49 @@ class CarForRentConatiner extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     spacing: 1,
                     children: [
-                      Text('#Trend Car', style: AppTextStyles.font14MediumRed),
+                      Text(
+                        '#Trend Car'.tr(context: context),
+                        style: AppTextStyles.font14MediumRed,
+                      ),
                     ],
                   ),
                 ),
                 Spacer(),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 4,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: const Color(0xFFEB5E28),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
+                GestureDetector(
+                  onTap: () {
+                    context.pushName(Routes.rentScreen);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 4,
+                    ),
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFEB5E28),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
                       ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 8,
-                    children: [
-                      Text('Rent', style: AppTextStyles.font14MediumWhite),
-                      Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        color: Colors.white,
-                        size: 16,
-                      ),
-                    ],
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      spacing: 8,
+                      children: [
+                        Text(
+                          'Rent'.tr(context: context),
+                          style: AppTextStyles.font14MediumWhite,
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios_outlined,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

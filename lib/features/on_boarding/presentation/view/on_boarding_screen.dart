@@ -4,6 +4,7 @@ import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:eldealer/features/on_boarding/presentation/view/widgets/get_start_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -20,15 +21,11 @@ class OnBoardingScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.4,
+            top: MediaQuery.of(context).size.height * 0.25,
 
-            child: Text(
-              "El-Dealer",
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
+            child: Image.asset(
+              'assets/images/app_logo_without_bg.png',
+              height: 350.h,
             ),
           ),
           Positioned(

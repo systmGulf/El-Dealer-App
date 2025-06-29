@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/common/app_spaces.dart';
+import '../../../../../core/routing/routes.dart';
 
 class CarInFavouriteWidget extends StatelessWidget {
   const CarInFavouriteWidget({super.key});
@@ -50,7 +53,7 @@ class CarInFavouriteWidget extends StatelessWidget {
                           style: AppTextStyles.font16RegularBlackWithOpacity,
                         ),
                         TextSpan(
-                          text: 'Day',
+                          text: 'Day'.tr(context: context),
                           style: AppTextStyles.font16RegularBlackWithOpacity,
                         ),
                       ],
@@ -63,61 +66,71 @@ class CarInFavouriteWidget extends StatelessWidget {
           verticalSpace(16),
           Row(
             children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 12,
-                  vertical: 4,
-                ),
-                decoration: ShapeDecoration(
-                  color: const Color(0x26EB5E28),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
+              GestureDetector(
+                onTap: () {
+                  context.pushName(Routes.carDetailsScreen);
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 4,
                   ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 1,
-                  children: [
-                    Text(
-                      'View Details',
-                      style: AppTextStyles.font14MediumRedWithOpacity,
+                  decoration: ShapeDecoration(
+                    color: const Color(0x26EB5E28),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
                     ),
-                  ],
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 1,
+                    children: [
+                      Text(
+                        'View Details'.tr(context: context),
+                        style: AppTextStyles.font14MediumRedWithOpacity,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Spacer(),
-              Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 4,
-                ),
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFEB5E28),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10),
+              GestureDetector(
+                onTap: () {
+                  context.pushName(Routes.rentScreen);
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 4,
+                  ),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFEB5E28),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10),
+                      ),
                     ),
                   ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 8,
-                  children: [
-                    Text(
-                      'Rent',
-                      style: AppTextStyles.font14MediumWhiteWithOpacity,
-                    ),
-                    Icon(
-                      Icons.arrow_forward_ios_rounded,
-                      size: 16.sp,
-                      color: Colors.white,
-                    ),
-                  ],
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 8,
+                    children: [
+                      Text(
+                        'Rent'.tr(context: context),
+                        style: AppTextStyles.font14MediumWhiteWithOpacity,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 16.sp,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

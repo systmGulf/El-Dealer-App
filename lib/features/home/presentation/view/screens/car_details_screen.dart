@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 import '../../../../../core/common/app_spaces.dart';
 import '../widgets/book_new_botton.dart';
@@ -25,7 +25,7 @@ class CarDetailsScreen extends StatelessWidget {
           icon: Icon(Icons.arrow_back_ios, color: Colors.black),
         ),
         title: Text(
-          'Ferrari 280 Special',
+          'Ferrari 280 Special'.tr(context: context),
           style: AppTextStyles.font28BoldBlack,
         ),
       ),
@@ -58,7 +58,7 @@ class CarDetailsScreen extends StatelessWidget {
                               style: AppTextStyles.font28BoldBlack,
                             ),
                             TextSpan(
-                              text: 'Day',
+                              text: 'Day'.tr(context: context),
                               style: AppTextStyles.font16RegularBlack,
                             ),
                           ],
@@ -80,7 +80,7 @@ class CarDetailsScreen extends StatelessWidget {
               spacing: 14,
               children: [
                 Text(
-                  'Overview',
+                  'Overview'.tr(context: context),
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 28,
@@ -96,7 +96,8 @@ class CarDetailsScreen extends StatelessWidget {
                       children: [
                         TextSpan(
                           text:
-                              'Lorem ipsum dolor sit amet consectetur. Fermentum morbi proin sed tortor augue sed neque. Id praesent sit posuere diam orci vivamus sapien velit neque. Sollicitudin ut convallis amet eget. Gravida egestas at turpis faucibus gravida',
+                              'Lorem ipsum dolor sit amet consectetur. Fermentum morbi proin sed tortor augue sed neque. Id praesent sit posuere diam orci vivamus sapien velit neque. Sollicitudin ut convallis amet eget. Gravida egestas at turpis faucibus gravida'
+                                  .tr(context: context),
                           style: TextStyle(
                             color: Colors.white.withValues(alpha: 204),
                             fontSize: 14,
@@ -106,7 +107,7 @@ class CarDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: ' Read more...',
+                          text: 'Read more...'.tr(context: context),
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
@@ -121,7 +122,10 @@ class CarDetailsScreen extends StatelessWidget {
                   ),
                 ),
 
-                Text('Renter Details', style: AppTextStyles.font28BoldWhite),
+                Text(
+                  'Renter Details'.tr(context: context),
+                  style: AppTextStyles.font28BoldWhite,
+                ),
                 verticalSpace(16),
                 ContactCard(),
               ],

@@ -6,16 +6,19 @@ class SettingsItemWidget extends StatelessWidget {
     required this.leadingIcon,
     required this.trailingIcon,
     required this.title,
+    this.onTap,
   });
   final Widget leadingIcon;
   final Widget trailingIcon;
   final String title;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListTile(
+        onTap: onTap,
         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),

@@ -40,6 +40,8 @@ dependencies:
   animate_do: ^4.2.0
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.1.0
+  scrollable_clean_calendar: ^1.5.0
+  easy_localization: ^3.0.7+1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +69,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svgs/
+    - assets/translations/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

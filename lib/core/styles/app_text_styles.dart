@@ -60,7 +60,7 @@ class AppTextStyles {
     letterSpacing: 0.02,
   );
   static TextStyle font24BoldBlackWithOpacity = TextStyle(
-    color: Colors.black.withValues(alpha: 217),
+    color: Colors.black,
     fontSize: 24.sp,
     fontFamily: 'Times New Roman',
     fontWeight: FontWeight.w700,

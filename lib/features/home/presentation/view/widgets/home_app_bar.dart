@@ -11,13 +11,19 @@ class HomeAppBar extends StatelessWidget {
     return Row(
       children: [
         CircleAvatar(
-          radius: 32,
+          radius: 30,
           backgroundColor: Colors.white.withOpacity(0.1),
 
-          child: SvgPicture.asset('assets/svgs/menu_icon.svg'),
+          child: Center(
+            child: SvgPicture.asset(
+              'assets/svgs/menu_icon.svg',
+              color: Colors.white,
+              height: 20.h,
+            ),
+          ),
         ),
         Spacer(),
-        Text("El-Dealer", style: AppTextStyles.font18BoldWhite),
+        Image.asset('assets/images/app_logo_without_bg.png', height: 70.h),
         Spacer(),
 
         SvgPicture.asset('assets/svgs/notification_icon.svg'),

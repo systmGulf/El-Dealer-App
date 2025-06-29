@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/app_spaces.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
               HomeAppBar(),
               verticalSpace(8),
               Text(
-                'Welcome back!',
+                'Welcome back!'.tr(context: context),
                 style: TextStyle(
                   color: Colors.white.withValues(alpha: 128),
                   fontSize: 16,
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
               verticalSpace(4),
 
               Text(
-                'Osama Mahmoud',
+                'Osama Mahmoud'.tr(context: context),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -54,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
               verticalSpace(18),
 
               Text(
-                'Select Cars for rent',
+                'Select Cars for rent'.tr(context: context),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -92,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   3,
                   (index) => Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
-                    child: CarForRentConatiner(),
+                    child: CarForRentwidget(),
                   ),
                 ),
               ),

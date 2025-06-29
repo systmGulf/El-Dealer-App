@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,7 +20,7 @@ class UserProfileCard extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            radius: 42,
+            radius: 40,
             backgroundColor: Colors.blue,
             child: CircleAvatar(
               radius: 38,
@@ -34,12 +35,12 @@ class UserProfileCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Osama Mahmoud',
+                'Osama Mahmoud'.tr(context: context),
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font24MediumWhite,
               ),
               Text(
-                'Joined Feb 15, 2025',
+                'Joined Feb 15, 2025'.tr(context: context),
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font16RegularWhite,
               ),
