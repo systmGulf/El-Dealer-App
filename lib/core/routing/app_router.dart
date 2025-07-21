@@ -1,5 +1,7 @@
+import 'package:eldealer/core/dependacy_injection/get_it.dart';
 import 'package:eldealer/core/routing/routes.dart';
 import 'package:eldealer/core/screens/no_route_screen.dart';
+import 'package:eldealer/features/auth/controller/cubit/login_cubit.dart';
 import 'package:eldealer/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:eldealer/features/auth/presentation/view/screens/sign_up_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/car_details_screen.dart';
@@ -7,6 +9,7 @@ import 'package:eldealer/features/home/presentation/view/screens/layout_screen.d
 import 'package:eldealer/features/home/presentation/view/screens/rent_screen.dart';
 import 'package:eldealer/features/on_boarding/presentation/view/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
   static Route onGenerateRoute(RouteSettings routeSettings) {
@@ -22,7 +25,13 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CarDetailsScreen());
       // login Screen
       case Routes.loginScreen:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<LoginCubit>(),
+                child: const LoginScreen(),
+              ),
+        );
       // sign up Screen
       case Routes.signUpScreen:
         return MaterialPageRoute(builder: (_) => const SignUpScreen());

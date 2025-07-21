@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/core/widgets/custom_app_button.dart';
-import 'package:eldealer/features/home/presentation/view/widgets/book_new_botton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scrollable_clean_calendar/controllers/clean_calendar_controller.dart';

@@ -88,12 +88,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               verticalSpace(16),
-              Column(
-                children: List.generate(
-                  3,
-                  (index) => Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
-                    child: CarForRentwidget(),
+              Hero(
+                tag: 'carImage',
+                transitionOnUserGestures: true,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: List.generate(
+                      3,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(bottom: 16.0),
+                        child: CarForRentwidget(),
+                      ),
+                    ),
                   ),
                 ),
               ),

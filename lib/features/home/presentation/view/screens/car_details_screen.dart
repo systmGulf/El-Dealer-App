@@ -49,7 +49,11 @@ class CarDetailsScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset('assets/images/dummy_car.png'),
+                      Hero(
+                        tag: 'carImage',
+                        transitionOnUserGestures: true,
+                        child: Image.asset('assets/images/dummy_car.png'),
+                      ),
                       Text.rich(
                         TextSpan(
                           children: [
