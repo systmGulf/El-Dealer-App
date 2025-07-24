@@ -1,3 +1,4 @@
+import 'package:eldealer/features/auth/data/model/login_response.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:eldealer/features/auth/data/model/login_request_body.dart';
@@ -24,7 +25,7 @@ class LoginCubit extends Cubit<LoginState> {
     );
     result.fold(
       (l) => emit(LoginError(message: l.errorMsg)),
-      (r) => emit(LoginSuccess()),
+      (r) => emit(LoginSuccess(loginResponse: r)),
     );
   }
 }

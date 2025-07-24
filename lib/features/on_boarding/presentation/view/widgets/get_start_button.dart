@@ -24,7 +24,10 @@ class GetStartButton extends StatelessWidget {
         children: [
           Text(
             'Get Started'.tr(context: context),
-            style: AppTextStyles.font19reguleWhite,
+            style: AppTextStyles.font19reguleWhite.copyWith(
+              fontWeight: FontWeight.bold,
+              fontSize: 16.sp,
+            ),
           ),
           Icon(Icons.arrow_forward_ios, color: Colors.white, size: 16.sp),
         ],

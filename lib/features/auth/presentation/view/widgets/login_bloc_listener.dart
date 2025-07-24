@@ -1,13 +1,13 @@
 import 'package:delightful_toast/delight_toast.dart';
 import 'package:delightful_toast/toast/components/toast_card.dart';
 import 'package:eldealer/core/common/context_extention.dart';
-import 'package:eldealer/features/auth/controller/cubit/login_cubit.dart';
+import 'package:eldealer/features/auth/presentation/controller/login_cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/common/app_spaces.dart';
-import '../../../../../core/dependacy_injection/get_it.dart';
+import '../../../../../core/common/custom_loading_indicator.dart';
+import '../../../../../core/network/api_constant.dart';
+import '../../../../../core/network/secure_cache.dart';
 import '../../../../../core/routing/routes.dart';
 
 class LoginBlocListener extends StatelessWidget {
@@ -16,7 +16,7 @@ class LoginBlocListener extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is LoginError) {
           context.pop();
           DelightToastBar(
@@ -32,35 +32,16 @@ class LoginBlocListener extends StatelessWidget {
                 ),
           ).show(context);
         } else if (state is LoginSuccess) {
+          await SecureCache.insertToCache(
+            key: 'token',
+            value: state.loginResponse.value?.token ?? '',
+          );
+          // Get Users Value from Secure Cache
+          ApiConstant.token = await SecureCache.getFromCache(key: 'token');
+          if (!context.mounted) return;
           context.pushName(Routes.homeScreen);
         } else if (state is LoginLoading) {
-          showDialog(
-            context: context,
-            builder:
-                (context) => Center(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(
-                        color: Theme.of(context).primaryColor,
-                        strokeWidth: 2,
-                        backgroundColor: Colors.white,
-                      ),
-                      verticalSpace(10),
-                      Text(
-                        'Loading...',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-          );
+          customLoadingIndicator(context);
         }
       },
       child: SizedBox.shrink(),

@@ -1,5 +1,5 @@
 class ApiConstant {
   static String token = '';
-  static String loginEndPoint = 'Auth/Login';
-  static String signUpEndPoint = '';
+  static String loginEndPoint = 'api/UserAuth/login';
+  static String signUpEndPoint = 'api/UserAuth/register';
 }

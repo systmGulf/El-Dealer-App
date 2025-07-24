@@ -1,15 +1,14 @@
-import 'package:delightful_toast/delight_toast.dart';
-import 'package:delightful_toast/toast/components/toast_card.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/app_spaces.dart';
 import 'package:eldealer/core/common/context_extention.dart';
-
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:eldealer/core/widgets/custom_app_button.dart';
-import 'package:eldealer/features/auth/controller/cubit/login_cubit.dart';
-import 'package:eldealer/features/auth/presentation/view/widgets/email_and_password_text_fields.dart';
+import 'package:eldealer/features/auth/presentation/controller/login_cubit/login_cubit.dart';
+import 'package:eldealer/features/auth/presentation/view/widgets/login_email_and_password_text_fields.dart';
 import 'package:eldealer/features/auth/presentation/view/widgets/login_bloc_listener.dart';
+import 'package:eldealer/features/auth/presentation/view/widgets/login_image_and_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,38 +30,9 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 verticalSpace(100),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/login_image.png',
-
-                      fit: BoxFit.scaleDown,
-                      width: 300.w,
-                    ),
-                  ],
-                ),
+                FadeInLeft(child: LoginImageAndText()),
                 verticalSpace(20),
-                Text(
-                  'Sign In'.tr(context: context),
-                  style: AppTextStyles.font20MontserratBold,
-                ),
-                verticalSpace(8),
-                SizedBox(
-                  width: 345,
-                  child: Opacity(
-                    opacity: 0.50,
-                    child: Text(
-                      'Sign up now and enjoy rental ease like \nnever before.'
-                          .tr(context: context),
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.font14MontserratRegularWithOpacity3,
-                    ),
-                  ),
-                ),
-                verticalSpace(20),
-                EmailAndPasswordTextFields(),
+                FadeInUp(child: LoginEmailAndPasswordTextFields()),
                 verticalSpace(20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -78,12 +48,14 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 verticalSpace(20),
-                CustomAppButton(
-                  onPressed: () {
-                    validateAndLogin(context);
-                  },
-                  textButton: 'Sign In'.tr(context: context),
-                  buttonColor: AppColors.orangeColor,
+                FadeInLeft(
+                  child: CustomAppButton(
+                    onPressed: () {
+                      validateAndLogin(context);
+                    },
+                    textButton: 'Sign In'.tr(context: context),
+                    buttonColor: AppColors.orangeColor,
+                  ),
                 ),
                 verticalSpace(50),
                 DontHaveAnAccountWidget(),

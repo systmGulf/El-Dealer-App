@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eldealer/core/common/app_bloc_observer.dart';
 import 'package:eldealer/core/dependacy_injection/get_it.dart';
 import 'package:eldealer/core/routing/routes.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/routing/app_router.dart';
@@ -10,7 +12,8 @@ import 'core/routing/app_router.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  setup();
+  setUpServiceLocator();
+  Bloc.observer = AppBlocObserver();
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('en', 'US'), Locale('ar', 'AE')],
