@@ -1,16 +1,22 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/app_bloc_observer.dart';
 import 'package:eldealer/core/dependacy_injection/get_it.dart';
+import 'package:eldealer/core/network/secure_cache.dart';
 import 'package:eldealer/core/routing/routes.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'core/network/api_constant.dart';
 import 'core/routing/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // token
+  ApiConstant.token = await SecureCache.getFromCache(key: 'token');
+  // username
+  ApiConstant.userName = await SecureCache.getFromCache(key: 'username');
   await EasyLocalization.ensureInitialized();
   setUpServiceLocator();
   Bloc.observer = AppBlocObserver();
@@ -40,7 +46,10 @@ class Eldealer extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.scaffoldColor,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.onBoardingScreen,
+        initialRoute:
+            ApiConstant.token == ''
+                ? Routes.onBoardingScreen
+                : Routes.homeScreen,
         onGenerateRoute: AppRouter.onGenerateRoute,
       ),
     );

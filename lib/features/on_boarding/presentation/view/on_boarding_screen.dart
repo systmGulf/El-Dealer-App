@@ -20,14 +20,12 @@ class OnBoardingScreen extends StatelessWidget {
             'assets/images/on_boarding_bg_image.png',
             fit: BoxFit.cover,
           ),
-          FadeInDownBig(
-            child: Positioned(
-              top: MediaQuery.of(context).size.height * 0.25,
+          Positioned(
+            top: MediaQuery.of(context).size.height * 0.25,
 
-              child: Image.asset(
-                'assets/images/app_logo_without_bg.png',
-                height: 350.h,
-              ),
+            child: Image.asset(
+              'assets/images/app_logo_without_bg.png',
+              height: 350.h,
             ),
           ),
           Positioned(

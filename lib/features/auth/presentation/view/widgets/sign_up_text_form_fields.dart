@@ -61,8 +61,10 @@ class _SignUpTextFieldsState extends State<SignUpTextFields> {
             child: CustomAppTextFormField(
               controller: context.read<SignUpCubit>().emailController,
               validator: (value) {
-                if (value!.isEmpty) {
-                  return 'please enter a valid email'.tr(context: context);
+                if (value!.isEmpty || AppRegex.isEmailValid(value) == false) {
+                  return 'please enter a valid email user@example.com'.tr(
+                    context: context,
+                  );
                 }
                 return null;
               },

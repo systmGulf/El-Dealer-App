@@ -7,11 +7,13 @@ class SettingsItemWidget extends StatelessWidget {
     required this.trailingIcon,
     required this.title,
     this.onTap,
+    this.borderColor,
   });
   final Widget leadingIcon;
   final Widget trailingIcon;
   final String title;
   final VoidCallback? onTap;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +22,9 @@ class SettingsItemWidget extends StatelessWidget {
       child: ListTile(
         onTap: onTap,
         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(8)),
-          side: BorderSide(color: Color(0x33FFFFFF), width: 2),
+          side: BorderSide(color: borderColor ?? Color(0x33FFFFFF), width: 2),
         ),
         leading: leadingIcon,
         trailing: trailingIcon,

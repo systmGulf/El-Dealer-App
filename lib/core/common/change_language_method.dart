@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eldealer/core/common/app_spaces.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,8 @@ Future<dynamic> buildChangeLanguageBottomSheet(BuildContext context) {
                   ),
                 ),
               ),
+
+              verticalSpace(20),
             ],
           ),
         ),

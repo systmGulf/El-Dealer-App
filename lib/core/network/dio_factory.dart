@@ -5,7 +5,6 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioFactory {
   DioFactory._();
-  
 
   static Dio? dio;
   static Dio getDio() {
@@ -31,7 +30,7 @@ class DioFactory {
 
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization': 'Bearer ${ApiConstant.token}',
+      'Authorization': '${ApiConstant.token}',
     };
   }
 

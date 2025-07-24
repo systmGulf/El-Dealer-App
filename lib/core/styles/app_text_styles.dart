@@ -24,12 +24,30 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     letterSpacing: 0.02,
   );
+  static TextStyle font18SemiBold = TextStyle(
+    color: Colors.black,
+    fontSize: 18.sp,
+    fontFamily: 'Times New Roman',
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle font14MediumRed = TextStyle(
     color: const Color(0xFFEB5E28),
     fontSize: 14.sp,
     fontFamily: 'Poppins',
     fontWeight: FontWeight.w500,
     letterSpacing: 0.01,
+  );
+  static TextStyle font20Medium = TextStyle(
+    color: Colors.black,
+    fontSize: 20.sp,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle font14Medium = TextStyle(
+    color: Colors.black,
+    fontSize: 14.sp,
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w500,
   );
   static TextStyle font14MediumWhite = TextStyle(
     color: const Color(0xFFFFFAFB),

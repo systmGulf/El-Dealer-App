@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/app_spaces.dart';
+import 'package:eldealer/core/network/api_constant.dart';
+import 'package:eldealer/features/home/presentation/view/controller/car_model/car_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../widgets/car_for_rent_conatiner.dart';
 import '../widgets/categories_container.dart';
+import '../widgets/get_cars_bloc_builder.dart';
 import '../widgets/home_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -29,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView(
             children: [
               HomeAppBar(),
-              verticalSpace(8),
+              // verticalSpace(8),
               Text(
                 'Welcome back!'.tr(context: context),
                 style: TextStyle(
@@ -43,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
               verticalSpace(4),
 
               Text(
-                'Osama Mahmoud'.tr(context: context),
+                ApiConstant.userName.tr(context: context),
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -88,21 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               verticalSpace(16),
-              Hero(
-                tag: 'carImage',
-                transitionOnUserGestures: true,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(
-                      3,
-                      (index) => Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: CarForRentwidget(),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              GetCarBlocBuilder(),
             ],
           ),
         ),

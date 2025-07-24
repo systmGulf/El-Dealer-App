@@ -3,15 +3,17 @@ import 'package:eldealer/core/errors/error_handler.dart';
 import 'package:eldealer/features/auth/data/model/login_request_body.dart';
 import 'package:eldealer/features/auth/data/model/login_response.dart';
 import 'package:eldealer/features/auth/data/model/sign_up_request_body.dart';
+import 'package:eldealer/features/auth/data/model/user_data_response.dart';
 import 'package:eldealer/features/auth/data/repos/auth_repo.dart';
 
 import '../../../../core/network/api_constant.dart';
 import '../../../../core/network/api_service.dart';
+import '../model/sign_up_response.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final ApiService _apiService;
 
-  AuthRepoImpl(this._apiService);
+  AuthRepoImpl({required ApiService apiService}) : _apiService = apiService;
 
   // Login call Api from Api Service
   @override
@@ -37,7 +39,7 @@ class AuthRepoImpl implements AuthRepo {
 
   // SignUp call Api from Api Service
   @override
-  Future<Either<Failure, void>> signUp({
+  Future<Either<Failure, SignUpResponse>> signUp({
     required SignUpRequestBody signUpRequestBody,
   }) async {
     try {
@@ -49,7 +51,26 @@ class AuthRepoImpl implements AuthRepo {
         return Left(ServerFailure(errorMsg: result.errorMsg));
       } else {
         return result['isSuccess']
-            ? const Right(null)
+            ? Right(SignUpResponse.fromJson(result))
+            : Left(ServerFailure(errorMsg: result['errors'][0]));
+      }
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
+
+  // getCurrentUser call Api from Api Service
+  @override
+  Future<Either<Failure, UserDataResponse>> getCurrentUser() async {
+    try {
+      final result = await _apiService.get(
+        endPoint: ApiConstant.getCurrentUserEndPoint,
+      );
+      if (result is ServerFailure) {
+        return Left(ServerFailure(errorMsg: result.errorMsg));
+      } else {
+        return result['isSuccess']
+            ? Right(UserDataResponse.fromJson(result))
             : Left(ServerFailure(errorMsg: result['errors'][0]));
       }
     } on Failure catch (e) {

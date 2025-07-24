@@ -1,4 +1,5 @@
 import 'package:eldealer/features/auth/data/model/sign_up_request_body.dart';
+import 'package:eldealer/features/auth/data/model/sign_up_response.dart';
 import 'package:eldealer/features/auth/data/repos/auth_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +30,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     );
     result.fold(
       (l) => emit(SignUpFailure(errorMsg: l.errorMsg)),
-      (r) => emit(SignUpSuccess()),
+      (signUpResponse) => emit(SignUpSuccess(signUpResponse: signUpResponse)),
     );
   }
 }

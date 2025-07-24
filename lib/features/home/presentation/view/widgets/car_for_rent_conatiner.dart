@@ -1,13 +1,24 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/common/app_spaces.dart';
 import '../../../../../core/routing/routes.dart';
+import '../../../../../core/styles/app_colors.dart';
 
 class CarForRentwidget extends StatelessWidget {
-  const CarForRentwidget({super.key});
+  const CarForRentwidget({
+    super.key,
+    required this.carName,
+    required this.pricePerDay,
+    this.image,
+  });
+  final String carName;
+  final String pricePerDay;
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +35,25 @@ class CarForRentwidget extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset('assets/images/dummy_car.png'),
+            CachedNetworkImage(
+              fit: BoxFit.fill,
+              imageUrl:
+                  image ??
+                  "https://www.pngmart.com/files/22/Car-Logo-PNG-HD-Isolated.png",
+              height: 150.h,
+
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
             Divider(),
             Row(
               children: [
-                Text(
-                  'Ferrari 280 Special'.tr(context: context),
-                  style: AppTextStyles.font24BoldBlack,
-                ),
+                Text(carName, style: AppTextStyles.font24BoldBlack),
                 Spacer(),
                 Text.rich(
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: '250'.tr(context: context),
+                        text: pricePerDay,
                         style: AppTextStyles.font24BoldBlack.copyWith(
                           color: Colors.black.withValues(alpha: 166),
                         ),

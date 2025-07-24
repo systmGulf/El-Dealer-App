@@ -1,10 +1,13 @@
+import 'package:eldealer/core/dependacy_injection/get_it.dart';
 import 'package:eldealer/core/screens/no_route_screen.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
+import 'package:eldealer/features/home/presentation/view/controller/car_model/car_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/screens/favourite_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/home_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/profile_screen.dart';
 import 'package:eldealer/features/home/presentation/view/widgets/bottom_nav_Bar_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -69,7 +72,10 @@ class _LayoutScreenState extends State<LayoutScreen> {
 Widget getCurrentScreen(int currentIndex) {
   switch (currentIndex) {
     case 0:
-      return const HomeScreen();
+      return BlocProvider(
+        create: (context) => getIt<CarCubit>()..getAllCars(),
+        child: const HomeScreen(),
+      );
     case 1:
       return const FavouriteScreen();
     case 2:

@@ -3,6 +3,9 @@ import 'package:delightful_toast/toast/components/toast_card.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/common/custom_loading_indicator.dart';
+import 'package:eldealer/core/network/api_constant.dart';
+import 'package:eldealer/core/network/api_service.dart';
+import 'package:eldealer/core/network/secure_cache.dart';
 import 'package:eldealer/features/auth/presentation/controller/sign_up_cubit/sign_up_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +23,7 @@ class SignUpBlocListener extends StatelessWidget {
               current is SignUpFailure ||
               current is SignUpSuccess ||
               current is SignUpLoading,
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is SignUpFailure) {
           context.pop();
           DelightToastBar(
@@ -37,6 +40,20 @@ class SignUpBlocListener extends StatelessWidget {
           ).show(context);
         } else if (state is SignUpSuccess) {
           context.pop();
+          SecureCache.insertToCache(
+            key: 'token',
+            value: state.signUpResponse.value?.token ?? '',
+          );
+          SecureCache.insertToCache(
+            key: 'username',
+            value: state.signUpResponse.value?.name ?? '',
+          );
+
+          ApiConstant.token = await SecureCache.getFromCache(key: 'token');
+          ApiConstant.userName = await SecureCache.getFromCache(
+            key: 'username',
+          );
+          if (!context.mounted) return;
           DelightToastBar(
             autoDismiss: true,
             builder:
@@ -51,7 +68,7 @@ class SignUpBlocListener extends StatelessWidget {
                   ),
                 ),
           ).show(context);
-          context.pushName(Routes.loginScreen);
+          context.pushName(Routes.homeScreen);
         } else if (state is SignUpLoading) {
           customLoadingIndicator(context);
         }

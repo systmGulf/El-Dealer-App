@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eldealer/core/network/api_constant.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,7 +36,7 @@ class UserProfileCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Osama Mahmoud'.tr(context: context),
+                ApiConstant.userName.tr(context: context),
                 textAlign: TextAlign.center,
                 style: AppTextStyles.font24MediumWhite,
               ),

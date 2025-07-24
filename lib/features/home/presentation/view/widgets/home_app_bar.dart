@@ -9,21 +9,14 @@ class HomeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: Colors.white.withOpacity(0.1),
-
-          child: Center(
-            child: SvgPicture.asset(
-              'assets/svgs/menu_icon.svg',
-              color: Colors.white,
-              height: 20.h,
-            ),
-          ),
-        ),
         Spacer(),
-        Image.asset('assets/images/app_logo_without_bg.png', height: 70.h),
+
+        Spacer(),
+
+        Image.asset('assets/images/app_logo_without_bg.png', height: 80.h),
         Spacer(),
 
         SvgPicture.asset('assets/svgs/notification_icon.svg'),
