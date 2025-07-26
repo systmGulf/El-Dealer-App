@@ -4,7 +4,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/common/custom_loading_indicator.dart';
 import 'package:eldealer/core/network/api_constant.dart';
-import 'package:eldealer/core/network/api_service.dart';
 import 'package:eldealer/core/network/secure_cache.dart';
 import 'package:eldealer/features/auth/presentation/controller/sign_up_cubit/sign_up_cubit.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +67,7 @@ class SignUpBlocListener extends StatelessWidget {
                   ),
                 ),
           ).show(context);
-          context.pushName(Routes.homeScreen);
+          context.pushAndRemoveUntilName(Routes.homeScreen);
         } else if (state is SignUpLoading) {
           customLoadingIndicator(context);
         }

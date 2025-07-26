@@ -2,6 +2,7 @@ import 'package:eldealer/core/dependacy_injection/get_it.dart';
 import 'package:eldealer/core/screens/no_route_screen.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/features/home/presentation/view/controller/car_model/car_cubit.dart';
+import 'package:eldealer/features/home/presentation/view/controller/saved_cars_cubit/saved_cars_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/screens/favourite_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/home_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/profile_screen.dart';
@@ -77,7 +78,10 @@ Widget getCurrentScreen(int currentIndex) {
         child: const HomeScreen(),
       );
     case 1:
-      return const FavouriteScreen();
+      return BlocProvider(
+        create: (context) => getIt<SavedCarsCubit>()..getSavedCars(),
+        child: const FavouriteScreen(),
+      );
     case 2:
       return const ProfileScreen();
     default:

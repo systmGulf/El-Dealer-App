@@ -55,7 +55,7 @@ class LoginBlocListener extends StatelessWidget {
                   ),
                 ),
           ).show(context);
-          context.pushName(Routes.homeScreen);
+          context.pushAndRemoveUntilName(Routes.homeScreen);
         } else if (state is LoginLoading) {
           customLoadingIndicator(context);
         }

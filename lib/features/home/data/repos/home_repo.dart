@@ -4,4 +4,5 @@ import 'package:eldealer/features/home/data/models/car_response_model.dart';
 
 abstract class HomeRepo {
   Future<Either<Failure, CarsResponseModel>> getAllCars();
+  Future<Either<Failure, CarsResponseModel>> getSavedCars();
 }

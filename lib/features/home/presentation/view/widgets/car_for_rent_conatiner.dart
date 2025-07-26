@@ -7,25 +7,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/common/app_spaces.dart';
 import '../../../../../core/routing/routes.dart';
-import '../../../../../core/styles/app_colors.dart';
 
 class CarForRentwidget extends StatelessWidget {
   const CarForRentwidget({
     super.key,
     required this.carName,
     required this.pricePerDay,
-    this.image,
+    this.image, required this.onTap,
   });
   final String carName;
   final String pricePerDay;
   final String? image;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        context.pushName(Routes.carDetailsScreen);
-      },
+      onTap: onTap,
       child: Container(
         padding: const EdgeInsets.all(16),
         clipBehavior: Clip.antiAlias,

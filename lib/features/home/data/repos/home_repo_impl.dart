@@ -28,4 +28,22 @@ class HomeRepoImpl implements HomeRepo {
       return Left(e);
     }
   }
+    // get saved cars called for api service
+  @override
+  Future<Either<Failure, CarsResponseModel>> getSavedCars() async{
+    try {
+      final result = await _apiService.get(
+        endPoint: ApiConstant.getSavedCarsEndPoint,
+      );
+      if (result is ServerFailure) {
+        return Left(ServerFailure(errorMsg: result.errorMsg));
+      } else {
+        return result['isSuccess']
+            ? Right(CarsResponseModel.fromJson(result))
+            : Left(ServerFailure(errorMsg: result['errors'][0]));
+      }
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
 }

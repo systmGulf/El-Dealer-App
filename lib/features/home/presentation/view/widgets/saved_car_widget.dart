@@ -12,7 +12,6 @@ class SavedCarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 165.w,
       height: 50.h,
 
       padding: const EdgeInsets.symmetric(horizontal: 17, vertical: 8),

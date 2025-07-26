@@ -4,6 +4,7 @@ import 'package:eldealer/features/auth/presentation/controller/login_cubit/login
 import 'package:eldealer/features/auth/data/repos/auth_repo_impl.dart';
 import 'package:eldealer/features/auth/presentation/controller/sign_up_cubit/sign_up_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/controller/car_model/car_cubit.dart';
+import 'package:eldealer/features/home/presentation/view/controller/saved_cars_cubit/saved_cars_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/auth/data/repos/auth_repo.dart';
@@ -31,5 +32,6 @@ void setUpServiceLocator() {
       () => SignUpCubit(authRepo: getIt<AuthRepo>()),
     )
     ..registerFactory<LoginCubit>(() => LoginCubit(authRepo: getIt<AuthRepo>()))
-    ..registerFactory<CarCubit>(() => CarCubit(homeRepo: getIt<HomeRepo>()));
+    ..registerFactory<CarCubit>(() => CarCubit(homeRepo: getIt<HomeRepo>()))
+    ..registerFactory(() => SavedCarsCubit(getIt<HomeRepo>()));
 }

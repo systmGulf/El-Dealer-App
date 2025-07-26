@@ -1,3 +1,4 @@
+import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/env/env.dart';
 import 'package:eldealer/features/home/presentation/view/widgets/car_for_rent_conatiner.dart';
 import 'package:envied/envied.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../../core/routing/routes.dart';
 import '../controller/car_model/car_cubit.dart';
 
 class GetCarBlocBuilder extends StatelessWidget {
@@ -17,7 +19,8 @@ class GetCarBlocBuilder extends StatelessWidget {
           (previous, current) =>
               current is GetAllCarsFailure ||
               current is GetAllCarsSuccess ||
-              current is GetAllCarsLoading,
+              current is GetAllCarsLoading ||
+              current != previous,
       builder: (context, state) {
         if (state is GetAllCarsLoading) {
           return Skeletonizer(
@@ -28,6 +31,7 @@ class GetCarBlocBuilder extends StatelessWidget {
                   (index) => Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: CarForRentwidget(
+                      onTap: () {},
                       carName: 'Car du',
                       pricePerDay: " 19029",
                     ),
@@ -47,6 +51,12 @@ class GetCarBlocBuilder extends StatelessWidget {
                   (index) => Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: CarForRentwidget(
+                      onTap: () {
+                        context.pushName(
+                          Routes.carDetailsScreen,
+                          arguments: state.carsResponseModel.value?[index],
+                        );
+                      },
                       image:
                           (state.carsResponseModel.value?[index].images !=
                                       null &&

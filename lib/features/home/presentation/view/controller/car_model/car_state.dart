@@ -15,6 +15,9 @@ final class GetAllCarsSuccess extends CarState {
   final CarsResponseModel carsResponseModel;
 
   const GetAllCarsSuccess({required this.carsResponseModel});
+
+  @override
+  List<Object> get props => [carsResponseModel];
 }
 
 final class GetAllCarsFailure extends CarState {
@@ -22,3 +25,4 @@ final class GetAllCarsFailure extends CarState {
 
   const GetAllCarsFailure({required this.errorMsg});
 }
+

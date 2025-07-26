@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
@@ -8,7 +9,15 @@ import '../../../../../core/common/app_spaces.dart';
 import '../../../../../core/routing/routes.dart';
 
 class CarInFavouriteWidget extends StatelessWidget {
-  const CarInFavouriteWidget({super.key});
+  const CarInFavouriteWidget({
+    super.key,
+    required this.carName,
+    required this.carImage,
+    required this.pricePerDay,
+  });
+  final String carName;
+  final String? carImage;
+  final String pricePerDay;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +32,19 @@ class CarInFavouriteWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.asset('assets/images/dummy_car_2.png'),
+          CachedNetworkImage(
+            fit: BoxFit.fill,
+            imageUrl:
+                carImage ??
+                "https://www.pngmart.com/files/22/Car-Logo-PNG-HD-Isolated.png",
+            height: 150.h,
+            errorWidget: (context, url, error) => Icon(Icons.error),
+          ),
 
           Divider(color: Colors.black.withValues(alpha: 217), thickness: 0.5),
           Row(
             children: [
-              Text(
-                'Benz Thunder R',
-                style: AppTextStyles.font24BoldBlackWithOpacity,
-              ),
+              Text(carName, style: AppTextStyles.font24BoldBlackWithOpacity),
               Spacer(),
               Row(
                 mainAxisSize: MainAxisSize.min,
@@ -40,7 +53,7 @@ class CarInFavouriteWidget extends StatelessWidget {
                 spacing: 4,
                 children: [
                   Text(
-                    '\$520',
+                    '\$$pricePerDay',
                     style: AppTextStyles.font24BoldBlack.copyWith(
                       color: Colors.black.withValues(alpha: 217),
                     ),

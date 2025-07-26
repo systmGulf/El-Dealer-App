@@ -1,16 +1,20 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
+import 'package:eldealer/features/home/data/models/car_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/common/app_spaces.dart';
+import '../../../../../core/env/env.dart';
 import '../widgets/book_new_botton.dart';
 import '../widgets/contact_card.dart';
 
 class CarDetailsScreen extends StatelessWidget {
-  const CarDetailsScreen({super.key});
+  const CarDetailsScreen({super.key, required this.carDetails});
+  final Value carDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +29,7 @@ class CarDetailsScreen extends StatelessWidget {
           icon: Icon(Icons.arrow_back_ios, color: Colors.black),
         ),
         title: Text(
-          'Ferrari 280 Special'.tr(context: context),
+          carDetails.model ?? '',
           style: AppTextStyles.font28BoldBlack,
         ),
       ),
@@ -52,13 +56,25 @@ class CarDetailsScreen extends StatelessWidget {
                       Hero(
                         tag: 'carImage',
                         transitionOnUserGestures: true,
-                        child: Image.asset('assets/images/dummy_car.png'),
+                        child: CachedNetworkImage(
+                          fit: BoxFit.fill,
+                          imageUrl:
+                              carDetails.images != null &&
+                                      carDetails.images!.isNotEmpty
+                                  ? '${Env.baseUrl}${carDetails.images!.first.filePath}'
+                                  : "https://www.pngmart.com/files/22/Car-Logo-PNG-HD-Isolated.png",
+
+                          height: 150.h,
+
+                          errorWidget:
+                              (context, url, error) => Icon(Icons.error),
+                        ),
                       ),
                       Text.rich(
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: '\$450 /',
+                              text: '\$${carDetails.pricePerDay} /',
                               style: AppTextStyles.font28BoldBlack,
                             ),
                             TextSpan(
@@ -99,25 +115,13 @@ class CarDetailsScreen extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text:
-                              'Lorem ipsum dolor sit amet consectetur. Fermentum morbi proin sed tortor augue sed neque. Id praesent sit posuere diam orci vivamus sapien velit neque. Sollicitudin ut convallis amet eget. Gravida egestas at turpis faucibus gravida'
-                                  .tr(context: context),
+                          text: carDetails.description,
                           style: TextStyle(
                             color: Colors.white.withValues(alpha: 204),
                             fontSize: 14,
                             fontFamily: 'Satoshi',
                             fontWeight: FontWeight.w400,
                             letterSpacing: 0.01,
-                          ),
-                        ),
-                        TextSpan(
-                          text: 'Read more...'.tr(context: context),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontFamily: 'Satoshi',
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.02,
                           ),
                         ),
                       ],

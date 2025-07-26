@@ -99,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                   context: context,
                   builder:
                       (context) => AlartBottomSheetDialog(
-                        title: 'Logout',
+                        title: 'Logout'.tr(context: context),
                         subTitle:
                             'Securely log out of your account—come back anytime!',
                         onTap: () {

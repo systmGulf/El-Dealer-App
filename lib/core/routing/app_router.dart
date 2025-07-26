@@ -5,6 +5,7 @@ import 'package:eldealer/features/auth/presentation/controller/login_cubit/login
 import 'package:eldealer/features/auth/presentation/controller/sign_up_cubit/sign_up_cubit.dart';
 import 'package:eldealer/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:eldealer/features/auth/presentation/view/screens/sign_up_screen.dart';
+import 'package:eldealer/features/home/data/models/car_response_model.dart';
 import 'package:eldealer/features/home/presentation/view/screens/car_details_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/layout_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/rent_screen.dart';
@@ -26,7 +27,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LayoutScreen());
       // Car Details Screen
       case Routes.carDetailsScreen:
-        return MaterialPageRoute(builder: (_) => const CarDetailsScreen());
+        return MaterialPageRoute(
+          builder:
+              (_) => CarDetailsScreen(
+                carDetails: routeSettings.arguments as Value,
+              ),
+        );
       // login Screen
       case Routes.loginScreen:
         return MaterialPageRoute(
