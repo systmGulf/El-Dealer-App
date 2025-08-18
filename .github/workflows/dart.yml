@@ -5,29 +5,24 @@ on:
 
 jobs:
   build-ios:
-    name: 🎉 iOS Build
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v3
 
       - uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
-          architecture: x64
+          channel: stable
 
       - run: flutter pub get
 
       - run: pod repo update
         working-directory: ios
 
-      # 👇 بدل build ios بـ build ipa
-      - run: flutter build ipa --release --no-codesign
+      - name: Build ipa
+        run: flutter build ipa --release --no-codesign --target-platform=ios
 
-      - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v2
+      - name: Upload ipa
+        uses: actions/upload-artifact@v4
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: build/ios/ipa/Runner.ipa
-          tag: v1.4
-          overwrite: true
-          body: "1.4 "
+          name: ios-build
+          path: build/ios/ipa/Runner.ipa
