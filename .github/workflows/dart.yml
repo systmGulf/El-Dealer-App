@@ -1,4 +1,5 @@
-name: Build Ios 
+
+name: iOS-ipa-build
 
 on:
   workflow_dispatch:
@@ -6,7 +7,7 @@ on:
 jobs:
   build-ios:
     name: 🎉 iOS Build
-    runs-on: macos-15 
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
 
@@ -37,6 +38,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/ios/iphoneos/FlutterIpaExport.ipa
-          tag: v1.4
+          tag: v1.0
           overwrite: true
-          body: "1.4 "
+          body: "This is first release"
