@@ -218,7 +218,27 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                           ),
                         ],
                       ),
-                    
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/svgs/profile.svg",
+                            color: Colors.orange,
+                          ),
+                          horizontalSpace(8),
+                          Text(
+                            'Color : ${widget.carDetails.color}',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12.sp,
+                              fontFamily: 'Montserrat',
+                              fontWeight: FontWeight.w500,
+                              height: 1.33,
+                              letterSpacing: 0.06,
+                            ),
+                          ),
+                        ],
+                      ),
+
                       Row(
                         children: [
                           SvgPicture.asset(
