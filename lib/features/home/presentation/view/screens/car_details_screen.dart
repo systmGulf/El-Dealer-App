@@ -218,10 +218,11 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                           ),
                         ],
                       ),
+                    
                       Row(
                         children: [
                           SvgPicture.asset(
-                            'assets/svgs/profile.svg',
+                            "assets/svgs/profile.svg",
                             color: Colors.orange,
                           ),
                           horizontalSpace(8),
