@@ -41,6 +41,7 @@ class _GetCarBlocBuilderState extends State<GetCarBlocBuilder> {
                   (index) => Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: CarForRentwidget(
+                      carId: 0,
                       onTap: () {},
                       carName: 'Car du',
                       pricePerDay: " 19029",
@@ -92,6 +93,7 @@ class _GetCarBlocBuilderState extends State<GetCarBlocBuilder> {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: CarForRentwidget(
+                      carId: car.id!.toInt(),
                       onTap: () {
                         context.pushName(
                           Routes.carDetailsScreen,

@@ -37,6 +37,7 @@ class FavouriteScreen extends StatelessWidget {
                         (index) => Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
                           child: CarInFavouriteWidget(
+                            carId: 0,
                             carName: 'dumyy',
                             carImage: null,
                             pricePerDay: 'dumyy',
@@ -48,18 +49,18 @@ class FavouriteScreen extends StatelessWidget {
                 } else if (state is GetSavedCarsSuccess) {
                   return Column(
                     children: List.generate(
-                  state.carsResponseModel.value?.items?.length ?? 0,
+                      state.savedCarModel.value?.length ?? 0,
 
                       (index) => CarInFavouriteWidget(
+                        carId: state.savedCarModel.value![index].id! ,
                         carName:
-                         state.carsResponseModel.value?.items?[index].brand?.name ?? '',
-                        carImage:
-                            '${Env.baseUrl}${state.carsResponseModel.value!.items?[index].images!.first}'
-                            ,
-                        pricePerDay:
-                            state.carsResponseModel.value?.items?[index].price
+                            state.savedCarModel.value![index].modelId
                                 .toString() ??
                             '',
+
+                        carImage:
+                            '${Env.baseUrl}${state.savedCarModel.value![index].thumbnailImage}',
+                        pricePerDay: '1--',
                       ),
                     ),
                   );

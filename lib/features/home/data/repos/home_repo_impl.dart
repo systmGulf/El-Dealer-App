@@ -6,6 +6,7 @@ import 'package:eldealer/features/home/data/models/car_response_model.dart';
 import 'package:eldealer/features/home/data/repos/home_repo.dart';
 
 import '../../../../core/network/api_constant.dart';
+import '../models/saved_car_response_model.dart';
 
 class HomeRepoImpl implements HomeRepo {
   final ApiService _apiService;
@@ -32,7 +33,7 @@ class HomeRepoImpl implements HomeRepo {
 
   // get saved cars called for api service
   @override
-  Future<Either<Failure, CarsResponseModel>> getSavedCars() async {
+  Future<Either<Failure, SavedCarResponseModel>> getSavedCars() async {
     try {
       final result = await _apiService.get(
         endPoint: ApiConstant.getSavedCarsEndPoint,
@@ -41,7 +42,7 @@ class HomeRepoImpl implements HomeRepo {
         return Left(ServerFailure(errorMsg: result.errorMsg));
       } else {
         return result['isSuccess']
-            ? Right(CarsResponseModel.fromJson(result))
+            ? Right(SavedCarResponseModel.fromJson(result))
             : Left(ServerFailure(errorMsg: result['errors'][0]));
       }
     } on Failure catch (e) {
@@ -61,6 +62,43 @@ class HomeRepoImpl implements HomeRepo {
       } else {
         return result['isSuccess']
             ? Right(BrandResponseModel.fromJson(result))
+            : Left(ServerFailure(errorMsg: result['errors'][0]));
+      }
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> saveCar({required String carId}) async {
+    try {
+      final result = await _apiService.post(
+        endPoint: ApiConstant.saveCarEndPoint,
+        body: {'carId': carId},
+      );
+      if (result is ServerFailure) {
+        return Left(ServerFailure(errorMsg: result.errorMsg));
+      } else {
+        return result['isSuccess']
+            ? Right(null)
+            : Left(ServerFailure(errorMsg: result['errors'][0]));
+      }
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> deleteCar({required int carId}) async {
+    try {
+      final result = await _apiService.delete(
+        endPoint: "${ApiConstant.deleteCarEndPoint}/$carId",
+      );
+      if (result is ServerFailure) {
+        return Left(ServerFailure(errorMsg: result.errorMsg));
+      } else {
+        return result['isSuccess']
+            ? Right(null)
             : Left(ServerFailure(errorMsg: result['errors'][0]));
       }
     } on Failure catch (e) {

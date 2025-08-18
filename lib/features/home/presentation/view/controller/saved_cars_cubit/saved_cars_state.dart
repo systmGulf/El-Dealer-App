@@ -12,15 +12,35 @@ final class SavedCarsInitial extends SavedCarsState {}
 final class GetSavedCarsLoading extends SavedCarsState {}
 
 final class GetSavedCarsSuccess extends SavedCarsState {
-  final CarsResponseModel carsResponseModel;
+  final SavedCarResponseModel savedCarModel;
 
-  const GetSavedCarsSuccess({required this.carsResponseModel});
+  const GetSavedCarsSuccess({required this.savedCarModel});
   @override
-  List<Object> get props => [carsResponseModel];
+  List<Object> get props => [savedCarModel];
 }
 
 final class GetSavedCarsFailure extends SavedCarsState {
   final String errorMsg;
 
   const GetSavedCarsFailure({required this.errorMsg});
+}
+
+final class SaveCarLoading extends SavedCarsState {}
+
+final class SaveCarSuccess extends SavedCarsState {}
+
+final class SaveCarFailure extends SavedCarsState {
+  final String errorMsg;
+
+  const SaveCarFailure({required this.errorMsg});
+}
+
+final class DeleteSavedCarLoading extends SavedCarsState {}
+
+final class DeleteSavedCarSuccess extends SavedCarsState {}
+
+final class DeleteSavedCarFailure extends SavedCarsState {
+  final String errorMsg;
+
+  const DeleteSavedCarFailure({required this.errorMsg});
 }

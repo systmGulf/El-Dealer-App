@@ -77,6 +77,9 @@ Widget getCurrentScreen(int currentIndex) {
         providers: [
           BlocProvider(create: (context) => getIt<CarCubit>()..getAllCars()),
           BlocProvider(create: (context) => getIt<BrandCubit>()..getBrands()),
+          BlocProvider(
+            create: (context) => getIt<SavedCarsCubit>()..getSavedCars(),
+          ),
         ],
         child: const HomeScreen(),
       );

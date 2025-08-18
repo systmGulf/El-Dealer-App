@@ -8,9 +8,10 @@ part of 'brand_response_model.dart';
 
 BrandResponseModel _$BrandResponseModelFromJson(Map<String, dynamic> json) =>
     BrandResponseModel(
-      value: (json['value'] as List<dynamic>?)
-          ?.map((e) => Value.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      value:
+          (json['value'] as List<dynamic>?)
+              ?.map((e) => Value.fromJson(e as Map<String, dynamic>))
+              .toList(),
       status: (json['status'] as num?)?.toInt(),
       isSuccess: json['isSuccess'] as bool?,
       successMessage: json['successMessage'] as String?,
@@ -31,13 +32,13 @@ Map<String, dynamic> _$BrandResponseModelToJson(BrandResponseModel instance) =>
     };
 
 Value _$ValueFromJson(Map<String, dynamic> json) => Value(
-      name: json['name'] as String?,
-      logo: json['logo'] as String?,
-      id: (json['id'] as num?)?.toInt(),
-    );
+  name: json['name'] as String?,
+  logo: json['logo'] as String?,
+  id: (json['id'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$ValueToJson(Value instance) => <String, dynamic>{
-      'name': instance.name,
-      'logo': instance.logo,
-      'id': instance.id,
-    };
+  'name': instance.name,
+  'logo': instance.logo,
+  'id': instance.id,
+};

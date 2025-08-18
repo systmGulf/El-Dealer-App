@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../../core/styles/app_colors.dart';
+
 // ignore: must_be_immutable
 class CategoriesContainer extends StatefulWidget {
   CategoriesContainer({
@@ -34,7 +36,7 @@ class _CategoriesContainerState extends State<CategoriesContainer> {
         color:
             widget.index != widget.selectedIndex
                 ? const Color(0xFF252422)
-                : const Color(0xFFEB5E28),
+                : AppColors.orangeColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(6.15),
         ),

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/app_spaces.dart';
 import 'package:eldealer/core/network/api_constant.dart';
+import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:eldealer/features/home/presentation/view/controller/car_cubit/car_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,19 +43,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Welcome back!'.tr(context: context),
                   style: TextStyle(
                     color: Colors.white.withValues(alpha: 128),
-                    fontSize: 16,
+                    fontSize: 14.sp,
                     fontFamily: 'General Sans',
                     fontWeight: FontWeight.w400,
                     letterSpacing: 0.02,
                   ),
                 ),
-                verticalSpace(4),
 
                 Text(
                   ApiConstant.userName.tr(context: context),
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
+                    color: AppColors.orangeColor,
+                    fontSize: 18.sp,
                     fontFamily: 'General Sans',
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.02,
@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Select Cars for rent'.tr(context: context),
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 18,
+                    fontSize: 14.sp,
                     fontFamily: 'General Sans',
                     fontWeight: FontWeight.w400,
                     letterSpacing: 0.02,

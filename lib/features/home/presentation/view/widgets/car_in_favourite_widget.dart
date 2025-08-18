@@ -2,7 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/styles/app_text_styles.dart';
+import 'package:eldealer/core/widgets/image_not_found_widget.dart';
+import 'package:eldealer/features/home/presentation/view/controller/saved_cars_cubit/saved_cars_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/common/app_spaces.dart';
@@ -13,11 +16,12 @@ class CarInFavouriteWidget extends StatelessWidget {
     super.key,
     required this.carName,
     required this.carImage,
-    required this.pricePerDay,
+    required this.pricePerDay, required this.carId,
   });
   final String carName;
   final String? carImage;
   final String pricePerDay;
+  final int carId;
 
   @override
   Widget build(BuildContext context) {
@@ -38,50 +42,50 @@ class CarInFavouriteWidget extends StatelessWidget {
                 carImage ??
                 "https://www.pngmart.com/files/22/Car-Logo-PNG-HD-Isolated.png",
             height: 150.h,
-            errorWidget: (context, url, error) => Icon(Icons.error),
+            errorWidget: (context, url, error) => ImageNotFoundWidget(),
           ),
 
           Divider(color: Colors.black.withValues(alpha: 217), thickness: 0.5),
-          Row(
-            children: [
-              Text(carName, style: AppTextStyles.font24BoldBlackWithOpacity),
-              Spacer(),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 4,
-                children: [
-                  Text(
-                    '\$$pricePerDay',
-                    style: AppTextStyles.font24BoldBlack.copyWith(
-                      color: Colors.black.withValues(alpha: 217),
-                    ),
-                  ),
-                  Text.rich(
-                    TextSpan(
-                      children: [
-                        TextSpan(
-                          text: '/',
-                          style: AppTextStyles.font16RegularBlackWithOpacity,
-                        ),
-                        TextSpan(
-                          text: 'Day'.tr(context: context),
-                          style: AppTextStyles.font16RegularBlackWithOpacity,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     Text(carName, style: AppTextStyles.font24BoldBlackWithOpacity),
+          //     Spacer(),
+          //     Row(
+          //       mainAxisSize: MainAxisSize.min,
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       spacing: 4,
+          //       children: [
+          //         Text(
+          //           '\$$pricePerDay',
+          //           style: AppTextStyles.font24BoldBlack.copyWith(
+          //             color: Colors.black.withValues(alpha: 217),
+          //           ),
+          //         ),
+          //         Text.rich(
+          //           TextSpan(
+          //             children: [
+          //               TextSpan(
+          //                 text: '/',
+          //                 style: AppTextStyles.font16RegularBlackWithOpacity,
+          //               ),
+          //               TextSpan(
+          //                 text: 'Day'.tr(context: context),
+          //                 style: AppTextStyles.font16RegularBlackWithOpacity,
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ],
+          // ),
           verticalSpace(16),
           Row(
             children: [
               GestureDetector(
                 onTap: () {
-                  context.pushName(Routes.carDetailsScreen);
+                  context.read<SavedCarsCubit>().deleteCar(carId: carId);
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
@@ -89,7 +93,7 @@ class CarInFavouriteWidget extends StatelessWidget {
                     vertical: 4,
                   ),
                   decoration: ShapeDecoration(
-                    color: const Color(0x26EB5E28),
+                    color: Colors.red,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
                     ),
@@ -101,8 +105,12 @@ class CarInFavouriteWidget extends StatelessWidget {
                     spacing: 1,
                     children: [
                       Text(
-                        'View Details'.tr(context: context),
-                        style: AppTextStyles.font14MediumRedWithOpacity,
+                        'Delete'.tr(context: context),
+                        style: AppTextStyles.font14MediumRedWithOpacity
+                            .copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                       ),
                     ],
                   ),

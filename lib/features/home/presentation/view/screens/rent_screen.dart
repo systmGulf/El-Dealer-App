@@ -102,7 +102,7 @@ class _RentScreenState extends State<RentScreen> {
                                   ),
                                   verticalSpace(10),
                                   Text(
-                                    "Number of Days : $difference",
+                                    "Rent for : $difference Days",
                                     style: AppTextStyles.font14Medium.copyWith(
                                       color: Colors.white,
                                     ),

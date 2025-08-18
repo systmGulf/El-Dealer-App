@@ -8,4 +8,6 @@ class ApiConstant {
   static String getAllCarsEndPoint = 'api/Car';
   static String getBrandsEndPoint = 'api/Brand';
   static String getSavedCarsEndPoint = 'api/SavedCar';
+  static String saveCarEndPoint = 'api/SavedCar';
+  static String deleteCarEndPoint = 'api/SavedCar';
 }

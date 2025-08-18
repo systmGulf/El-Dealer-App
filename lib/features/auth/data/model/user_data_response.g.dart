@@ -8,9 +8,10 @@ part of 'user_data_response.dart';
 
 UserDataResponse _$UserDataResponseFromJson(Map<String, dynamic> json) =>
     UserDataResponse(
-      value: json['value'] == null
-          ? null
-          : Value.fromJson(json['value'] as Map<String, dynamic>),
+      value:
+          json['value'] == null
+              ? null
+              : Value.fromJson(json['value'] as Map<String, dynamic>),
       status: (json['status'] as num?)?.toInt(),
       isSuccess: json['isSuccess'] as bool?,
       successMessage: json['successMessage'] as String?,
@@ -31,17 +32,17 @@ Map<String, dynamic> _$UserDataResponseToJson(UserDataResponse instance) =>
     };
 
 Value _$ValueFromJson(Map<String, dynamic> json) => Value(
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      email: json['email'] as String?,
-      phoneNumber: json['phoneNumber'],
-      image: json['image'],
-    );
+  id: json['id'] as String?,
+  name: json['name'] as String?,
+  email: json['email'] as String?,
+  phoneNumber: json['phoneNumber'],
+  image: json['image'],
+);
 
 Map<String, dynamic> _$ValueToJson(Value instance) => <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'phoneNumber': instance.phoneNumber,
-      'image': instance.image,
-    };
+  'id': instance.id,
+  'name': instance.name,
+  'email': instance.email,
+  'phoneNumber': instance.phoneNumber,
+  'image': instance.image,
+};

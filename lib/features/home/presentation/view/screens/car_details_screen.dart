@@ -53,7 +53,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
               alignment: Alignment.bottomCenter,
               children: [
                 Container(
-                  height: 316.h,
+                  height: 320.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -72,7 +72,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10.r),
                           ),
-                          height: 200.h,
+                          height: 190.h,
 
                           child: PageView.builder(
                             onPageChanged: (index) {
@@ -202,7 +202,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                         children: [
                           SvgPicture.asset(
                             'assets/svgs/profile.svg',
-                            color: Colors.orange,
+                            color: AppColors.orangeColor,
                           ),
                           horizontalSpace(8),
                           Text(
@@ -222,7 +222,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                         children: [
                           Icon(
                             Icons.directions_car,
-                            color: Colors.orange,
+                            color: AppColors.orangeColor,
                             size: 20.sp,
                           ),
                           horizontalSpace(8),
@@ -244,7 +244,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                         children: [
                           SvgPicture.asset(
                             "assets/svgs/lucide_fuel.svg",
-                            color: Colors.orange,
+                            color: AppColors.orangeColor,
                           ),
                           horizontalSpace(8),
                           Text(
@@ -289,7 +289,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                           ),
                         ),
                         Text(
-                          '200',
+                          '${widget.carDetails.maxSpeed}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 14.sp,
@@ -300,7 +300,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                           ),
                         ),
                         Text(
-                          'mph',
+                          'km/h',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 12.sp,

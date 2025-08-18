@@ -8,9 +8,10 @@ part of 'sign_up_response.dart';
 
 SignUpResponse _$SignUpResponseFromJson(Map<String, dynamic> json) =>
     SignUpResponse(
-      value: json['value'] == null
-          ? null
-          : Value.fromJson(json['value'] as Map<String, dynamic>),
+      value:
+          json['value'] == null
+              ? null
+              : Value.fromJson(json['value'] as Map<String, dynamic>),
       status: (json['status'] as num?)?.toInt(),
       isSuccess: json['isSuccess'] as bool?,
       successMessage: json['successMessage'] as String?,
@@ -31,19 +32,19 @@ Map<String, dynamic> _$SignUpResponseToJson(SignUpResponse instance) =>
     };
 
 Value _$ValueFromJson(Map<String, dynamic> json) => Value(
-      token: json['token'] as String?,
-      id: json['id'] as String?,
-      name: json['name'] as String?,
-      email: json['email'] as String?,
-      phoneNumber: json['phoneNumber'],
-      image: json['image'],
-    );
+  token: json['token'] as String?,
+  id: json['id'] as String?,
+  name: json['name'] as String?,
+  email: json['email'] as String?,
+  phoneNumber: json['phoneNumber'],
+  image: json['image'],
+);
 
 Map<String, dynamic> _$ValueToJson(Value instance) => <String, dynamic>{
-      'token': instance.token,
-      'id': instance.id,
-      'name': instance.name,
-      'email': instance.email,
-      'phoneNumber': instance.phoneNumber,
-      'image': instance.image,
-    };
+  'token': instance.token,
+  'id': instance.id,
+  'name': instance.name,
+  'email': instance.email,
+  'phoneNumber': instance.phoneNumber,
+  'image': instance.image,
+};

@@ -8,9 +8,10 @@ part of 'login_response.dart';
 
 LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
     LoginResponse(
-      value: json['value'] == null
-          ? null
-          : Value.fromJson(json['value'] as Map<String, dynamic>),
+      value:
+          json['value'] == null
+              ? null
+              : Value.fromJson(json['value'] as Map<String, dynamic>),
       status: (json['status'] as num?)?.toInt(),
       isSuccess: json['isSuccess'] as bool?,
       successMessage: json['successMessage'] as String?,
@@ -30,10 +31,9 @@ Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
       'validationErrors': instance.validationErrors,
     };
 
-Value _$ValueFromJson(Map<String, dynamic> json) => Value(
-      token: json['token'] as String?,
-    );
+Value _$ValueFromJson(Map<String, dynamic> json) =>
+    Value(token: json['token'] as String?);
 
 Map<String, dynamic> _$ValueToJson(Value instance) => <String, dynamic>{
-      'token': instance.token,
-    };
+  'token': instance.token,
+};

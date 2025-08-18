@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eldealer/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -86,7 +87,7 @@ class _BrandBannerBlodBuilderState extends State<BrandBannerBlodBuilder> {
                                 color:
                                     index != selectedIndex
                                         ? const Color(0xFF252422)
-                                        : const Color(0xFFEB5E28),
+                                        : AppColors.orangeColor,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(6.15),
                                 ),
