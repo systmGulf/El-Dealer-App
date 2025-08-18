@@ -1,7 +1,7 @@
 import 'package:eldealer/core/dependacy_injection/get_it.dart';
 import 'package:eldealer/core/screens/no_route_screen.dart';
 import 'package:eldealer/core/styles/app_colors.dart';
-import 'package:eldealer/features/home/presentation/view/controller/car_model/car_cubit.dart';
+import 'package:eldealer/features/home/presentation/view/controller/car_cubit/car_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/controller/saved_cars_cubit/saved_cars_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/screens/favourite_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/home_screen.dart';
@@ -9,6 +9,9 @@ import 'package:eldealer/features/home/presentation/view/screens/profile_screen.
 import 'package:eldealer/features/home/presentation/view/widgets/bottom_nav_Bar_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../controller/brand_cubit/brand_cubit.dart';
 
 class LayoutScreen extends StatefulWidget {
   const LayoutScreen({super.key});
@@ -23,46 +26,43 @@ class _LayoutScreenState extends State<LayoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.scaffoldColor,
-      bottomNavigationBar: IntrinsicHeight(
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          elevation: 0,
-          iconSize: 15,
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        elevation: 0,
 
-          currentIndex: currentIndex,
-          items: [
-            BottomNavigationBarItem(
-              icon: BottomNavBarIcon(
-                currentIndex: currentIndex,
-                selectedIndex: 0,
-                iconImage: 'assets/svgs/home_icon.svg',
-              ),
-              label: 'Home',
+        currentIndex: currentIndex,
+        items: [
+          BottomNavigationBarItem(
+            icon: BottomNavBarIcon(
+              currentIndex: currentIndex,
+              selectedIndex: 0,
+              iconImage: 'assets/svgs/home_icon.svg',
             ),
-            BottomNavigationBarItem(
-              icon: BottomNavBarIcon(
-                currentIndex: currentIndex,
-                selectedIndex: 1,
-                iconImage: 'assets/svgs/favourite_icon.svg',
-              ),
-              label: 'Favorite',
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: BottomNavBarIcon(
+              currentIndex: currentIndex,
+              selectedIndex: 1,
+              iconImage: 'assets/svgs/favourite_icon.svg',
             ),
-            BottomNavigationBarItem(
-              icon: BottomNavBarIcon(
-                currentIndex: currentIndex,
-                selectedIndex: 2,
-                iconImage: 'assets/svgs/profile_icon.svg',
-              ),
-              label: 'Profile',
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: BottomNavBarIcon(
+              currentIndex: currentIndex,
+              selectedIndex: 2,
+              iconImage: 'assets/svgs/profile_icon.svg',
             ),
-          ],
-          backgroundColor: AppColors.lightBlackColor,
-          selectedItemColor: AppColors.orangeColor,
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          onTap: (int index) => setState(() => currentIndex = index),
-          unselectedItemColor: Colors.white,
-        ),
+            label: 'Profile',
+          ),
+        ],
+        backgroundColor: AppColors.lightBlackColor,
+        selectedItemColor: AppColors.orangeColor,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        onTap: (int index) => setState(() => currentIndex = index),
+        unselectedItemColor: Colors.white,
       ),
       body: getCurrentScreen(currentIndex),
     );
@@ -73,8 +73,11 @@ class _LayoutScreenState extends State<LayoutScreen> {
 Widget getCurrentScreen(int currentIndex) {
   switch (currentIndex) {
     case 0:
-      return BlocProvider(
-        create: (context) => getIt<CarCubit>()..getAllCars(),
+      return MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (context) => getIt<CarCubit>()..getAllCars()),
+          BlocProvider(create: (context) => getIt<BrandCubit>()..getBrands()),
+        ],
         child: const HomeScreen(),
       );
     case 1:

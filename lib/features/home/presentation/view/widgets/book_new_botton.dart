@@ -12,28 +12,24 @@ class BookNowButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.pushName(Routes.rentScreen);
-      },
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
-        decoration: ShapeDecoration(
-          color: AppColors.orangeColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
+      decoration: ShapeDecoration(
+        color: AppColors.orangeColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 24,
+        children: [
+          Text(
+            'Book Now'.tr(context: context),
+            style: AppTextStyles.font18MediumWhite,
           ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 24,
-          children: [
-            Text('Book Now'.tr(context: context), style: AppTextStyles.font18MediumWhite),
-            Icon(Icons.arrow_forward, color: Colors.white),
-          ],
-        ),
+          Icon(Icons.arrow_forward, color: Colors.white),
+        ],
       ),
     );
   }

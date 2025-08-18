@@ -48,23 +48,16 @@ class FavouriteScreen extends StatelessWidget {
                 } else if (state is GetSavedCarsSuccess) {
                   return Column(
                     children: List.generate(
-                      state.carsResponseModel.value?.length ?? 0,
+                  state.carsResponseModel.value?.items?.length ?? 0,
 
                       (index) => CarInFavouriteWidget(
                         carName:
-                            state.carsResponseModel.value?[index].model ?? '',
+                         state.carsResponseModel.value?.items?[index].brand?.name ?? '',
                         carImage:
-                            (state.carsResponseModel.value?[index].images !=
-                                        null &&
-                                    state
-                                        .carsResponseModel
-                                        .value![index]
-                                        .images!
-                                        .isNotEmpty)
-                                ? '${Env.baseUrl}${state.carsResponseModel.value![index].images!.first.filePath}'
-                                : null,
+                            '${Env.baseUrl}${state.carsResponseModel.value!.items?[index].images!.first}'
+                            ,
                         pricePerDay:
-                            state.carsResponseModel.value?[index].pricePerDay
+                            state.carsResponseModel.value?.items?[index].price
                                 .toString() ??
                             '',
                       ),

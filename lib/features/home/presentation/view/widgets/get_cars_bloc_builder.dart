@@ -1,17 +1,27 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/env/env.dart';
+import 'package:eldealer/core/styles/app_text_styles.dart';
+import 'package:eldealer/features/home/presentation/view/controller/brand_cubit/brand_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/widgets/car_for_rent_conatiner.dart';
 import 'package:envied/envied.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../../core/routing/routes.dart';
-import '../controller/car_model/car_cubit.dart';
+import '../controller/brand_cubit/brand_state.dart';
+import '../controller/car_cubit/car_cubit.dart';
 
-class GetCarBlocBuilder extends StatelessWidget {
+class GetCarBlocBuilder extends StatefulWidget {
   const GetCarBlocBuilder({super.key});
 
+  @override
+  State<GetCarBlocBuilder> createState() => _GetCarBlocBuilderState();
+}
+
+class _GetCarBlocBuilderState extends State<GetCarBlocBuilder> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CarCubit, CarState>(
@@ -41,44 +51,61 @@ class GetCarBlocBuilder extends StatelessWidget {
             ),
           );
         } else if (state is GetAllCarsSuccess) {
-          return Hero(
-            tag: 'carImage',
-            transitionOnUserGestures: true,
-            child: SingleChildScrollView(
-              child: Column(
-                children: List.generate(
-                  state.carsResponseModel.value?.length ?? 0,
-                  (index) => Padding(
+          final allCars = state.carsResponseModel.value?.items ?? [];
+
+          final brandState = context.watch<BrandCubit>().state;
+          String? selectedBrand;
+          if (brandState is BrandSelected) {
+            selectedBrand = brandState.brandName;
+          }
+
+          final filteredCars =
+              selectedBrand == null
+                  ? allCars
+                  : allCars
+                      .where(
+                        (car) =>
+                            car.brand?.name?.toLowerCase() ==
+                            selectedBrand!.toLowerCase(),
+                      )
+                      .toList();
+
+          return filteredCars.isEmpty
+              ? Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 30.0),
+                  child: Text(
+                    'No Cars Found'.tr(context: context),
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              )
+              : ListView.builder(
+                shrinkWrap: true,
+                physics: const BouncingScrollPhysics(),
+                itemCount: filteredCars.length,
+                itemBuilder: (context, index) {
+                  final car = filteredCars[index];
+                  return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: CarForRentwidget(
                       onTap: () {
                         context.pushName(
                           Routes.carDetailsScreen,
-                          arguments: state.carsResponseModel.value?[index],
+                          arguments: car,
                         );
                       },
-                      image:
-                          (state.carsResponseModel.value?[index].images !=
-                                      null &&
-                                  state
-                                      .carsResponseModel
-                                      .value![index]
-                                      .images!
-                                      .isNotEmpty)
-                              ? '${Env.baseUrl}${state.carsResponseModel.value![index].images!.first.filePath}'
-                              : null,
+                      image: '${Env.baseUrl}${car.thumbnailImage}',
                       carName:
-                          state.carsResponseModel.value?[index].model ?? '',
-                      pricePerDay:
-                          state.carsResponseModel.value?[index].pricePerDay
-                              ?.toString() ??
-                          '',
+                          '${car.brand?.name ?? ''} ${car.model?.name ?? ''}',
+                      pricePerDay: car.price?.toString() ?? '',
                     ),
-                  ),
-                ),
-              ),
-            ),
-          );
+                  );
+                },
+              );
         } else if (state is GetAllCarsFailure) {
           return Center(child: Text(state.errorMsg));
         } else {

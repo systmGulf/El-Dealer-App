@@ -3,7 +3,7 @@ part 'car_response_model.g.dart';
 
 @JsonSerializable()
 class CarsResponseModel {
-  List<Value>? value;
+  Value? value;
   int? status;
   bool? isSuccess;
   String? successMessage;
@@ -20,44 +20,95 @@ class CarsResponseModel {
     this.errors,
     this.validationErrors,
   });
+
   factory CarsResponseModel.fromJson(Map<String, dynamic> json) =>
       _$CarsResponseModelFromJson(json);
 }
 
 @JsonSerializable()
 class Value {
-  String? model;
-  int? version;
-  String? plateNumber;
-  String? color;
-  int? pricePerHour;
-  int? pricePerDay;
-  List<Images>? images;
-  int? brandId;
-  dynamic? description;
-  int? id;
+  int? totalCount;
+  List<Items>? items;
 
-  Value({
-    this.model,
-    this.version,
-    this.plateNumber,
-    this.color,
-    this.pricePerHour,
-    this.pricePerDay,
-    this.images,
-    this.brandId,
-    this.description,
-    this.id,
-  });
+  Value({this.totalCount, this.items});
 
   factory Value.fromJson(Map<String, dynamic> json) => _$ValueFromJson(json);
 }
 
 @JsonSerializable()
-class Images {
-  String? filePath;
+class Items {
+  List<String>? images;
+  String? thumbnailImage;
+  String? description;
+  int? year;
+  String? color;
+  int? price;
+  String? plateNumber;
+  int? maxSpeed;
+  int? seats;
+  int? luggage;
+  int? transmission;
+  int? carSize;
+  Brand? brand;
+  Model? model;
+  Category? category;
+  Category? type;
+  Category? fuel;
+  int? id;
 
-  Images({this.filePath});
+  Items({
+    this.images,
+    this.thumbnailImage,
+    this.description,
+    this.year,
+    this.color,
+    this.price,
+    this.plateNumber,
+    this.maxSpeed,
+    this.seats,
+    this.luggage,
+    this.transmission,
+    this.carSize,
+    this.brand,
+    this.model,
+    this.category,
+    this.type,
+    this.fuel,
+    this.id,
+  });
 
-  factory Images.fromJson(Map<String, dynamic> json) => _$ImagesFromJson(json);
+  factory Items.fromJson(Map<String, dynamic> json) => _$ItemsFromJson(json);
+}
+
+@JsonSerializable()
+class Brand {
+  String? name;
+  String? logo;
+  int? id;
+
+  Brand({this.name, this.logo, this.id});
+
+  factory Brand.fromJson(Map<String, dynamic> json) => _$BrandFromJson(json);
+}
+
+@JsonSerializable()
+class Model {
+  String? name;
+  int? brandId;
+  int? id;
+
+  Model({this.name, this.brandId, this.id});
+
+  factory Model.fromJson(Map<String, dynamic> json) => _$ModelFromJson(json);
+}
+
+@JsonSerializable()
+class Category {
+  String? name;
+  int? id;
+
+  Category({this.name, this.id});
+
+  factory Category.fromJson(Map<String, dynamic> json) =>
+      _$CategoryFromJson(json);
 }

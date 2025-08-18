@@ -6,6 +6,6 @@ class ApiConstant {
   static String signUpEndPoint = 'api/UserAuth/register';
   static String getCurrentUserEndPoint = 'GetUser';
   static String getAllCarsEndPoint = 'api/Car';
-
+  static String getBrandsEndPoint = 'api/Brand';
   static String getSavedCarsEndPoint = 'api/SavedCar';
 }

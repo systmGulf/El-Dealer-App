@@ -8,7 +8,8 @@ part 'car_state.dart';
 class CarCubit extends Cubit<CarState> {
   final HomeRepo homeRepo;
   CarCubit({required this.homeRepo}) : super(CarInitial());
-  // get all cars Method
+
+  CarsResponseModel? carsResponseModel;
   Future<void> getAllCars() async {
     emit(GetAllCarsLoading());
     var result = await homeRepo.getAllCars();
@@ -18,6 +19,4 @@ class CarCubit extends Cubit<CarState> {
           emit(GetAllCarsSuccess(carsResponseModel: carsResponseModel)),
     );
   }
-
-
 }

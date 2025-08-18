@@ -50,7 +50,7 @@ class LoginBlocListener extends StatelessWidget {
                   color: Colors.green,
                   leading: Icon(Icons.error_outline, size: 28),
                   title: Text(
-                    'Login Successfully'.tr(context: context),
+                    'Login Successfully',
                     style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
                   ),
                 ),

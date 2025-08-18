@@ -1,34 +1,23 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:eldealer/core/env/env.dart';
+import 'package:eldealer/core/widgets/image_not_found_widget.dart';
+import 'package:eldealer/features/home/data/models/brand_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-List<Widget> categories = [
-  Text(
-    'All'.tr(),
-    style: TextStyle(
-      color: Colors.white,
-      fontSize: 16,
-      fontFamily: 'General Sans',
-      fontWeight: FontWeight.w600,
-      letterSpacing: 0.02,
-    ),
-  ),
-  SvgPicture.asset('assets/svgs/car_model_dumy.svg'),
-  SvgPicture.asset('assets/svgs/car_model_dumy.svg'),
-
-  SvgPicture.asset('assets/svgs/car_model_dumy.svg'),
-  SvgPicture.asset('assets/svgs/car_model_dumy.svg'),
-];
-
+// ignore: must_be_immutable
 class CategoriesContainer extends StatefulWidget {
   CategoriesContainer({
     super.key,
     required this.index,
     required this.selectedIndex,
+    required this.brandResponseModel,
   });
   int index;
   int selectedIndex;
+  final Value brandResponseModel;
 
   @override
   State<CategoriesContainer> createState() => _CategoriesContainerState();
@@ -50,7 +39,14 @@ class _CategoriesContainerState extends State<CategoriesContainer> {
           borderRadius: BorderRadius.circular(6.15),
         ),
       ),
-      child: Center(child: categories[widget.index]),
+      child: Center(
+        child: CachedNetworkImage(
+          imageUrl: "${Env.baseUrl}${widget.brandResponseModel.logo}",
+          height: 40.h,
+          fit: BoxFit.fill,
+          errorWidget: (context, url, error) => Icon(Icons.error),
+        ),
+      ),
     );
   }
 }

@@ -18,8 +18,7 @@ class RentScreen extends StatefulWidget {
 }
 
 class _RentScreenState extends State<RentScreen> {
-  int pricePerDay = 250;
-  int totalPrice = 250;
+  ValueNotifier<int> pricePerDay = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class _RentScreenState extends State<RentScreen> {
           Padding(
             padding: EdgeInsets.only(right: 16.w),
             child: Text(
-              '$totalPrice \$',
+              '${pricePerDay.value} \$',
               style: AppTextStyles.font20MontserratBold,
             ),
           ),
@@ -55,9 +54,7 @@ class _RentScreenState extends State<RentScreen> {
                 minDate: DateTime.now(),
                 maxDate: DateTime.now().add(const Duration(days: 30)),
                 onRangeSelected: (firstDate, secondDate) {
-                  totalPrice =
-                      (secondDate?.difference(firstDate).inDays ?? 0 + 1) *
-                      pricePerDay;
+                  pricePerDay.value = secondDate!.difference(firstDate).inDays;
                 },
                 onDayTapped: (date) {},
                 onPreviousMinDateTapped: (date) {},

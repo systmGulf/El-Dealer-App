@@ -7,13 +7,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/common/app_spaces.dart';
 import '../../../../../core/routing/routes.dart';
+import '../../../../../core/widgets/image_not_found_widget.dart';
 
 class CarForRentwidget extends StatelessWidget {
   const CarForRentwidget({
     super.key,
     required this.carName,
     required this.pricePerDay,
-    this.image, required this.onTap,
+    this.image,
+    required this.onTap,
   });
   final String carName;
   final String pricePerDay;
@@ -34,19 +36,24 @@ class CarForRentwidget extends StatelessWidget {
         child: Column(
           children: [
             CachedNetworkImage(
-              fit: BoxFit.fill,
               imageUrl:
                   image ??
                   "https://www.pngmart.com/files/22/Car-Logo-PNG-HD-Isolated.png",
               height: 150.h,
 
-              errorWidget: (context, url, error) => Icon(Icons.error),
+              errorWidget: (context, url, error) => ImageNotFoundWidget(),
             ),
             Divider(),
             Row(
               children: [
-                Text(carName, style: AppTextStyles.font24BoldBlack),
-                Spacer(),
+                Expanded(
+                  child: Text(
+                    carName,
+                    style: AppTextStyles.font24BoldBlack,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+
                 Text.rich(
                   TextSpan(
                     children: [
@@ -100,32 +107,10 @@ class CarForRentwidget extends StatelessWidget {
                     ],
                   ),
                 ),
+
                 Spacer(),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  decoration: ShapeDecoration(
-                    color: const Color(0x26EB5E28),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 1,
-                    children: [
-                      Text(
-                        '#Trend Car'.tr(context: context),
-                        style: AppTextStyles.font14MediumRed,
-                      ),
-                    ],
-                  ),
-                ),
-                Spacer(),
+                Icon(Icons.arrow_forward_ios_outlined),
+                horizontalSpace(8),
                 GestureDetector(
                   onTap: () {
                     context.pushName(Routes.rentScreen);

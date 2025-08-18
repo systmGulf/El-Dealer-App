@@ -31,6 +31,7 @@ dependencies:
   cached_network_image: ^3.4.1
   skeletonizer: ^2.1.0+1
   flutter_launcher_icons: ^0.14.4
+  dots_indicator: ^4.0.1
   
 
 dev_dependencies:
@@ -46,9 +47,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
-    - assets/svgs/
-    - assets/translations/
+    - asset/images/
+    - asset/svgs/
+    - asset/translations/
     
   # fonts:
   #   - family: Schyler
@@ -65,6 +66,6 @@ flutter:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/app_logo_without_bg.png"
+  image_path: "asset/images/app_logo_without_bg.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
  

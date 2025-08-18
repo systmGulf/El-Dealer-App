@@ -13,7 +13,6 @@ import 'package:eldealer/features/home/presentation/view/screens/rent_screen.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/home/presentation/view/controller/car_model/car_cubit.dart';
 import '../../features/on_boarding/presentation/view/on_boarding_screen.dart';
 
 class AppRouter {
@@ -30,7 +29,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder:
               (_) => CarDetailsScreen(
-                carDetails: routeSettings.arguments as Value,
+                carDetails: routeSettings.arguments as Items,
               ),
         );
       // login Screen
