@@ -109,7 +109,8 @@ class CarForRentwidget extends StatelessWidget {
                 ),
 
                 Spacer(),
-                Icon(Icons.arrow_forward_ios_outlined),
+                Image.asset('assets/images/save_icon.png', height: 24.h),
+
                 horizontalSpace(8),
                 GestureDetector(
                   onTap: () {

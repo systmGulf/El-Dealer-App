@@ -53,7 +53,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
               alignment: Alignment.bottomCenter,
               children: [
                 Container(
-                  height: 310.h,
+                  height: 316.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -119,7 +119,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                         TextSpan(
                           children: [
                             TextSpan(
-                              text: '\$${widget.carDetails.price} /',
+                              text: '\Egp ${widget.carDetails.price} /',
                               style: AppTextStyles.font28BoldBlack,
                             ),
                             TextSpan(
@@ -220,9 +220,10 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                       ),
                       Row(
                         children: [
-                          SvgPicture.asset(
-                            "assets/svgs/profile.svg",
+                          Icon(
+                            Icons.directions_car,
                             color: Colors.orange,
+                            size: 20.sp,
                           ),
                           horizontalSpace(8),
                           Text(
@@ -242,7 +243,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                       Row(
                         children: [
                           SvgPicture.asset(
-                            "assets/svgs/profile.svg",
+                            "assets/svgs/lucide_fuel.svg",
                             color: Colors.orange,
                           ),
                           horizontalSpace(8),
@@ -256,6 +257,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                               height: 1.33,
                               letterSpacing: 0.06,
                             ),
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
