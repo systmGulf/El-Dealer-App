@@ -6,6 +6,7 @@ import 'package:eldealer/features/auth/presentation/controller/sign_up_cubit/sig
 import 'package:eldealer/features/auth/presentation/view/screens/login_screen.dart';
 import 'package:eldealer/features/auth/presentation/view/screens/sign_up_screen.dart';
 import 'package:eldealer/features/home/data/models/car_response_model.dart';
+import 'package:eldealer/features/home/presentation/view/controller/rent_car/rent_car_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/screens/car_details_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/layout_screen.dart';
 import 'package:eldealer/features/home/presentation/view/screens/rent_screen.dart';
@@ -52,7 +53,13 @@ class AppRouter {
         );
       // rent Screen
       case Routes.rentScreen:
-        return MaterialPageRoute(builder: (_) => const RentScreen());
+        return MaterialPageRoute(
+          builder:
+              (_) => BlocProvider(
+                create: (context) => getIt<RentCarCubit>(),
+                child: RentScreen(carId: routeSettings.arguments as int),
+              ),
+        );
       default:
         // this is the default route
         return MaterialPageRoute(builder: (_) => const NoRouteScreen());

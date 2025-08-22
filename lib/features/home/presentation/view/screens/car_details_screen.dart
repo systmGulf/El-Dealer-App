@@ -14,7 +14,6 @@ import '../../../../../core/env/env.dart';
 import '../../../../../core/routing/routes.dart';
 import '../../../../../core/widgets/image_not_found_widget.dart';
 import '../widgets/book_new_botton.dart';
-import '../widgets/contact_card.dart';
 
 class CarDetailsScreen extends StatefulWidget {
   const CarDetailsScreen({super.key, required this.carDetails});
@@ -136,7 +135,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                   bottom: -33.h,
                   child: GestureDetector(
                     onTap: () {
-                      context.pushName(Routes.rentScreen);
+                      context.pushName(Routes.rentScreen, arguments: widget.carDetails.id ?? 0);
                     },
                     child: BookNowButton(),
                   ),

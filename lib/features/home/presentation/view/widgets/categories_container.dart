@@ -1,11 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/env/env.dart';
-import 'package:eldealer/core/widgets/image_not_found_widget.dart';
 import 'package:eldealer/features/home/data/models/brand_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/styles/app_colors.dart';
 

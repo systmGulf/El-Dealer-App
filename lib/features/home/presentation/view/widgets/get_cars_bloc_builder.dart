@@ -1,15 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:eldealer/core/common/context_extention.dart';
 import 'package:eldealer/core/env/env.dart';
-import 'package:eldealer/core/styles/app_text_styles.dart';
 import 'package:eldealer/features/home/presentation/view/controller/brand_cubit/brand_cubit.dart';
 import 'package:eldealer/features/home/presentation/view/widgets/car_for_rent_conatiner.dart';
-import 'package:envied/envied.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-
 import '../../../../../core/routing/routes.dart';
 import '../controller/brand_cubit/brand_state.dart';
 import '../controller/car_cubit/car_cubit.dart';
@@ -40,7 +37,7 @@ class _GetCarBlocBuilderState extends State<GetCarBlocBuilder> {
                   3,
                   (index) => Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
-                    child: CarForRentwidget(
+                    child: CarForRentWidget(
                       carId: 0,
                       onTap: () {},
                       carName: 'Car du',
@@ -92,7 +89,7 @@ class _GetCarBlocBuilderState extends State<GetCarBlocBuilder> {
                   final car = filteredCars[index];
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
-                    child: CarForRentwidget(
+                    child: CarForRentWidget(
                       carId: car.id!.toInt(),
                       onTap: () {
                         context.pushName(

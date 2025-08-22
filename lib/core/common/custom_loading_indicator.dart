@@ -15,6 +15,7 @@ Future<dynamic> customLoadingIndicator(BuildContext context) {
               CircularProgressIndicator(
                 color: Theme.of(context).primaryColor,
                 strokeWidth: 2,
+                
                 backgroundColor: Colors.white,
               ),
               verticalSpace(10),

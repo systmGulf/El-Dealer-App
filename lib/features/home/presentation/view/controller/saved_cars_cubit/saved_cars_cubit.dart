@@ -19,7 +19,7 @@ class SavedCarsCubit extends Cubit<SavedCarsState> {
       (failure) => emit(GetSavedCarsFailure(errorMsg: failure.errorMsg)),
       (carsResponseModel) {
         cars = carsResponseModel;
-        print("saved caraaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaas $cars");
+        
 
         emit(GetSavedCarsSuccess(savedCarModel: carsResponseModel));
       },

@@ -46,40 +46,6 @@ class CarInFavouriteWidget extends StatelessWidget {
           ),
 
           Divider(color: Colors.black.withValues(alpha: 217), thickness: 0.5),
-          // Row(
-          //   children: [
-          //     Text(carName, style: AppTextStyles.font24BoldBlackWithOpacity),
-          //     Spacer(),
-          //     Row(
-          //       mainAxisSize: MainAxisSize.min,
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       crossAxisAlignment: CrossAxisAlignment.center,
-          //       spacing: 4,
-          //       children: [
-          //         Text(
-          //           '\$$pricePerDay',
-          //           style: AppTextStyles.font24BoldBlack.copyWith(
-          //             color: Colors.black.withValues(alpha: 217),
-          //           ),
-          //         ),
-          //         Text.rich(
-          //           TextSpan(
-          //             children: [
-          //               TextSpan(
-          //                 text: '/',
-          //                 style: AppTextStyles.font16RegularBlackWithOpacity,
-          //               ),
-          //               TextSpan(
-          //                 text: 'Day'.tr(context: context),
-          //                 style: AppTextStyles.font16RegularBlackWithOpacity,
-          //               ),
-          //             ],
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ],
-          // ),
           verticalSpace(16),
           Row(
             children: [

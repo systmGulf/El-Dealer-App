@@ -1,12 +1,12 @@
 name: eldealer
 description: "A new Flutter project."
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.7.0
 
 dependencies:
   animate_do: ^4.2.0
@@ -32,7 +32,6 @@ dependencies:
   skeletonizer: ^2.1.0+1
   flutter_launcher_icons: ^0.14.4
   dots_indicator: ^4.0.1
-  
 
 dev_dependencies:
   build_runner: ^2.7.0
@@ -43,14 +42,13 @@ dev_dependencies:
   json_serializable: ^6.6.1
 
 flutter:
-
   uses-material-design: true
 
   assets:
     - assets/images/
     - assets/svgs/
     - assets/translations/
-    
+
   # fonts:
   #   - family: Schyler
   #     fonts:
@@ -68,4 +66,3 @@ flutter_launcher_icons:
   ios: true
   image_path: "asset/images/app_logo_without_bg.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
- 

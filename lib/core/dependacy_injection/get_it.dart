@@ -11,6 +11,7 @@ import '../../features/auth/data/repos/auth_repo.dart';
 import '../../features/home/data/repos/home_repo.dart';
 import '../../features/home/data/repos/home_repo_impl.dart';
 import '../../features/home/presentation/view/controller/car_cubit/car_cubit.dart';
+import '../../features/home/presentation/view/controller/rent_car/rent_car_cubit.dart';
 
 final getIt = GetIt.instance;
 
@@ -35,5 +36,6 @@ void setUpServiceLocator() {
     ..registerFactory<LoginCubit>(() => LoginCubit(authRepo: getIt<AuthRepo>()))
     ..registerFactory<CarCubit>(() => CarCubit(homeRepo: getIt<HomeRepo>()))
     ..registerFactory(() => SavedCarsCubit(getIt<HomeRepo>()))
-    ..registerFactory(() => BrandCubit(getIt<HomeRepo>()));
+    ..registerFactory(() => BrandCubit(getIt<HomeRepo>()))
+    ..registerFactory(() => RentCarCubit(getIt<HomeRepo>()));
 }

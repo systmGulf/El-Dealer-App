@@ -5,12 +5,16 @@ class SecureCache {
     required String key,
     required String value,
   }) {
-    const localStorage = FlutterSecureStorage();
+    const localStorage = FlutterSecureStorage(
+      aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    );
     return localStorage.write(key: key, value: value);
   }
 
   static Future<String> getFromCache({required String key}) async {
-    const localStorage = FlutterSecureStorage();
+    const localStorage = FlutterSecureStorage(
+      aOptions: AndroidOptions(encryptedSharedPreferences: true),
+    );
 
     return await localStorage.read(key: key) ?? '';
   }

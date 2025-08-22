@@ -3,6 +3,7 @@ import 'package:eldealer/core/errors/error_handler.dart';
 import 'package:eldealer/core/network/api_service.dart';
 import 'package:eldealer/features/home/data/models/brand_response_model.dart';
 import 'package:eldealer/features/home/data/models/car_response_model.dart';
+import 'package:eldealer/features/home/data/models/rent_car_request_body.dart';
 import 'package:eldealer/features/home/data/repos/home_repo.dart';
 
 import '../../../../core/network/api_constant.dart';
@@ -93,6 +94,25 @@ class HomeRepoImpl implements HomeRepo {
     try {
       final result = await _apiService.delete(
         endPoint: "${ApiConstant.deleteCarEndPoint}/$carId",
+      );
+      if (result is ServerFailure) {
+        return Left(ServerFailure(errorMsg: result.errorMsg));
+      } else {
+        return result['isSuccess']
+            ? Right(null)
+            : Left(ServerFailure(errorMsg: result['errors'][0]));
+      }
+    } on Failure catch (e) {
+      return Left(e);
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> rentCar({required RentCarRequestBody rentCarRequestBody}) async{
+    try {
+      final result = await _apiService.post(
+        endPoint: ApiConstant.rentCarEndPoint,
+        body: rentCarRequestBody.toJson(),
       );
       if (result is ServerFailure) {
         return Left(ServerFailure(errorMsg: result.errorMsg));
